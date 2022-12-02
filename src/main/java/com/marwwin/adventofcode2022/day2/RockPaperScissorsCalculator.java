@@ -1,25 +1,21 @@
 package com.marwwin.adventofcode2022.day2;
 
 import com.marwwin.adventofcode2022.day2.enums.Hand;
+import com.marwwin.adventofcode2022.day2.enums.Outcome;
 
-public class RockPaperScissorsPart1 {
+public class RockPaperScissorsCalculator {
   private int points = 0;
 
-  public void play(String hand) {
-    RockPaperScissorsGame game = new RockPaperScissorsGame(hand);
+  public void play(RockPaperScissorsGame game) {
     scoreGame(game);
-    scoreShape(game.player);
+    scoreShape(game.getPlayer());
   }
 
   public void scoreGame(RockPaperScissorsGame game) {
-    if (game.opponent == game.player)
+    if (game.getOutcome() == Outcome.WIN)
+      points += 6;
+    if (game.getOutcome() == Outcome.DRAW)
       points += 3;
-    if (game.opponent == Hand.ROCK && game.player == Hand.PAPER)
-      points += 6;
-    if (game.opponent == Hand.PAPER && game.player == Hand.SCISSOR)
-      points += 6;
-    if (game.opponent == Hand.SCISSOR && game.player == Hand.ROCK)
-      points += 6;
   }
 
   public void scoreShape(Hand player) {

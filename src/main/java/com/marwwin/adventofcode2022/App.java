@@ -19,7 +19,6 @@ public class App {
 
         long endTime = System.currentTimeMillis();
         System.out.println("All solutions took " + (endTime - startTime) + " ms");
-
     }
 
     private static void showHeader() {
