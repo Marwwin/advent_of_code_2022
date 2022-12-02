@@ -51,16 +51,16 @@ public class Day2Test {
   public void part1ShouldGivePointsForGamesWhenOpponentHasRock() {
     RockPaperScissorsCalculator rps = new RockPaperScissorsCalculator();
     RockPaperScissorsGame game1 = new RockPaperScissorsGamePart1("A X");
-    rps.scoreGame(game1);
+    rps.scoreGame(game1.getOutcome());
     assertEquals(rps.getPoints(), 3);
     rps.clearPoints();
 
     RockPaperScissorsGame game2 = new RockPaperScissorsGamePart1("A Z");
-    rps.scoreGame(game2);
+    rps.scoreGame(game2.getOutcome());
     assertEquals(rps.getPoints(), 0);
 
     RockPaperScissorsGame game3 = new RockPaperScissorsGamePart1("A Y");
-    rps.scoreGame(game3);
+    rps.scoreGame(game3.getOutcome());
     assertEquals(rps.getPoints(), 6);
   }
 
@@ -68,17 +68,17 @@ public class Day2Test {
   public void part1ShouldGivePointsForGamesWhenOpponentHasPaper() {
     RockPaperScissorsCalculator rps = new RockPaperScissorsCalculator();
     RockPaperScissorsGame game1 = new RockPaperScissorsGamePart1("B X");
-    rps.scoreGame(game1);
+    rps.scoreGame(game1.getOutcome());
     assertEquals(rps.getPoints(), 0);
     rps.clearPoints();
 
     RockPaperScissorsGame game2 = new RockPaperScissorsGamePart1("B Z");
-    rps.scoreGame(game2);
+    rps.scoreGame(game2.getOutcome());
     assertEquals(rps.getPoints(), 6);
     rps.clearPoints();
 
     RockPaperScissorsGame game3 = new RockPaperScissorsGamePart1("B Y");
-    rps.scoreGame(game3);
+    rps.scoreGame(game3.getOutcome());
     assertEquals(rps.getPoints(), 3);
   }
 
@@ -86,17 +86,17 @@ public class Day2Test {
   public void part1ShouldGivePointsForGamesWhenOpponentHasScissors() {
     RockPaperScissorsCalculator rps = new RockPaperScissorsCalculator();
     RockPaperScissorsGame game1 = new RockPaperScissorsGamePart1("C X");
-    rps.scoreGame(game1);
+    rps.scoreGame(game1.getOutcome());
     assertEquals(rps.getPoints(), 6);
     rps.clearPoints();
 
     RockPaperScissorsGame game2 = new RockPaperScissorsGamePart1("C Z");
-    rps.scoreGame(game2);
+    rps.scoreGame(game2.getOutcome());
     assertEquals(rps.getPoints(), 3);
     rps.clearPoints();
 
     RockPaperScissorsGame game3 = new RockPaperScissorsGamePart1("C Y");
-    rps.scoreGame(game3);
+    rps.scoreGame(game3.getOutcome());
     assertEquals(rps.getPoints(), 0);
   }
 

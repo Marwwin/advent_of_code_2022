@@ -7,14 +7,14 @@ public class RockPaperScissorsCalculator {
   private int points = 0;
 
   public void play(RockPaperScissorsGame game) {
-    scoreGame(game);
+    scoreGame(game.getOutcome());
     scoreShape(game.getPlayer());
   }
 
-  public void scoreGame(RockPaperScissorsGame game) {
-    if (game.getOutcome() == Outcome.WIN)
+  public void scoreGame(Outcome outcome) {
+    if (outcome == Outcome.WIN)
       points += 6;
-    if (game.getOutcome() == Outcome.DRAW)
+    if (outcome == Outcome.DRAW)
       points += 3;
   }
 

@@ -4,9 +4,9 @@ import com.marwwin.adventofcode2022.day2.enums.Hand;
 import com.marwwin.adventofcode2022.day2.enums.Outcome;
 
 public class RockPaperScissorsGamePart1 extends RockPaperScissorsGame {
-  Hand player;
-  Hand opponent;
-  Outcome outcome;
+  private Hand player;
+  private Hand opponent;
+  private Outcome outcome;
 
   public RockPaperScissorsGamePart1(String hand) {
     String[] handArray = hand.split(" ");
@@ -15,7 +15,7 @@ public class RockPaperScissorsGamePart1 extends RockPaperScissorsGame {
     this.outcome = parseOutcome();
   }
 
-  public Hand parsePlayer(String string) { 
+  private Hand parsePlayer(String string) { 
     if (string.equals("X"))
       return Hand.ROCK;
     if (string.equals("Y"))
@@ -25,7 +25,7 @@ public class RockPaperScissorsGamePart1 extends RockPaperScissorsGame {
     return null;
   }
 
-  public Hand parseOpponent(String string) {
+  private Hand parseOpponent(String string) {
     if (string.equals("A"))
       return Hand.ROCK;
     if (string.equals("B"))
@@ -35,7 +35,7 @@ public class RockPaperScissorsGamePart1 extends RockPaperScissorsGame {
     return null;
   }
 
-  public Outcome parseOutcome() {
+  private Outcome parseOutcome() {
     if (this.player == this.opponent)
       return Outcome.DRAW;
     if (this.player == Hand.ROCK && this.opponent == Hand.SCISSOR)
