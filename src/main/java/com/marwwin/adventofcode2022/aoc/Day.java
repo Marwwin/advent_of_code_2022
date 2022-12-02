@@ -17,7 +17,9 @@ public abstract class Day {
     System.out.println(this.part2());
 
     long endTime = System.currentTimeMillis();
-    System.out.println("Took " + (endTime - startTime) + "ms");
+    System.out.println("Took " + (endTime - startTime) + " ms");
+    System.out.println();
+
   }
 
   abstract public int part1();
