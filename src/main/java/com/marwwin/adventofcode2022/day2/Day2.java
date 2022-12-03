@@ -3,14 +3,14 @@ package com.marwwin.adventofcode2022.day2;
 import java.util.List;
 
 import com.marwwin.adventofcode2022.aoc.Day;
-import com.marwwin.adventofcode2022.aoc.Utils;
+import com.marwwin.adventofcode2022.aoc.AoC;
 
 public class Day2 extends Day {
   List<String> input;
 
   public Day2(boolean test) {
     super("Day 2");
-    input = Utils.getInputAsString("day2", test);
+    input = AoC.getInputAsString("day2", test);
   }
 
   @Override

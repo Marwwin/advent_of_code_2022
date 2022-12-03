@@ -6,9 +6,10 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
-public class Utils {
+public class AoC {
 
   public static List<Integer> getInputAsInteger(String day, boolean useTestData) {
     List<String> result = getInputAsString(day, useTestData);
@@ -46,5 +47,14 @@ public class Utils {
     return path;
   }
 
+  public static String[] splitStringInTwo(String string) {
+    int mid = string.length() / 2;
+    return new String[] { string.substring(0, mid), string.substring(mid, string.length()) };
+  }
+
+  public static Set<Character> stringToSetOfChars(String string) {
+    return string.chars()
+        .mapToObj(e -> (char) e).collect(Collectors.toSet());
+  }
 
 }
