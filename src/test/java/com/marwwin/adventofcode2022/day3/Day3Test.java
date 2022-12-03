@@ -9,32 +9,32 @@ import com.marwwin.adventofcode2022.aoc.Day;
 public class Day3Test {
   @Test
   public void shouldSolveTestDataPart1(){
-    Day day3 = new Day3(true);
-    assertEquals(day3.part1(), 157);
+    Day3 day3 = new Day3(true);
+    assertEquals(day3.part1Slower(), 157);
   }
   @Test
   public void shouldSolveRealDataPart1(){
-    Day day3 = new Day3(false);
-    assertEquals(day3.part1(), 8401);
+    Day3 day3 = new Day3(false);
+    assertEquals(day3.part1Slower(), 8401);
   }
   @Test
   public void binTreeShouldSolveTestDataPart1(){
     Day3 day3 = new Day3(true);
-    assertEquals(day3.part1BT(), 157);
+    assertEquals(day3.part1(), 157);
   }
   @Test
   public void binTreeShouldSolveRealDataPart1(){
     Day3 day3 = new Day3(false);
-    assertEquals(day3.part1BT(), 8401);
+    assertEquals(day3.part1(), 8401);
   }
   @Test
   public void shouldSolveTestDataPart2(){
-    Day day3 = new Day3(true);
+    Day3 day3 = new Day3(true);
     assertEquals(day3.part2(), 70);
   }
   @Test
   public void shouldSolveTestRealPart2(){
-    Day day3 = new Day3(false);
+    Day3 day3 = new Day3(false);
     assertEquals(day3.part2(), 2641);
   }
   @Test

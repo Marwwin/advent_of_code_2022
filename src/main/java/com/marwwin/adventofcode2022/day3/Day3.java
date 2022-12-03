@@ -6,7 +6,6 @@ import java.util.Set;
 import com.marwwin.adventofcode2022.aoc.Day;
 import com.marwwin.adventofcode2022.aoc.AoC;
 import com.marwwin.adventofcode2022.aoc.BinaryTree.BinaryTree;
-import com.marwwin.adventofcode2022.aoc.BinaryTree.Node;
 
 public class Day3 extends Day {
   List<String> input;
@@ -20,22 +19,11 @@ public class Day3 extends Day {
   public int part1() {
     int result = 0;
     for (String rucksack : input) {
+      BinaryTree tree = new BinaryTree();
       String[] compartments = AoC.splitStringInTwo(rucksack);
-      Set<Character> compartment1 = AoC.stringToSetOfChars(compartments[0]);
-      compartment1.retainAll(AoC.stringToSetOfChars(compartments[1]));
-      result += charToPriority(compartment1.iterator().next());
-    }
-    return result;
-  }
-
-  public int part1BT() {
-    int result = 0;
-    for (String rucksack : input) {
-      Node root = new Node();
-      String[] compartments = AoC.splitStringInTwo(rucksack);
-      compartments[1].chars().forEach(ch -> BinaryTree.insert(ch, root));
+      compartments[1].chars().forEach(ch -> tree.insert(ch));
       for (char ch : compartments[0].toCharArray()) {
-        if (BinaryTree.hasValue(ch, root)) {
+        if (tree.search(ch) != null) {
           result += charToPriority(ch);
           break;
         }
@@ -57,36 +45,49 @@ public class Day3 extends Day {
       group[i] = rucksack;
       i += 1;
       if (i == 3) {
-        result += charToPriority(unionOfGroup(group).iterator().next());
+        result += charToPriority(intersectionOfGroup(group).iterator().next());
         i = 0;
-      } 
+      }
     }
     return result;
   }
 
-  private Set<Character> unionOfGroup(String[] group) {
+  private Set<Character> intersectionOfGroup(String[] group) {
     Set<Character> result = AoC.stringToSetOfChars(group[0]);
     result.retainAll(AoC.stringToSetOfChars(group[1]));
     result.retainAll(AoC.stringToSetOfChars(group[2]));
     return result;
   }
 
+  public int part1Slower() {
+    int result = 0;
+    for (String rucksack : input) {
+      String[] compartments = AoC.splitStringInTwo(rucksack);
+      Set<Character> compartment1 = AoC.stringToSetOfChars(compartments[0]);
+      compartment1.retainAll(AoC.stringToSetOfChars(compartments[1]));
+      result += charToPriority(compartment1.iterator().next());
+    }
+    return result;
+  }
+
+
+
   public int part2BT() {
     int result = 0;
     for (int i = 0; i < input.size(); i += 3) {
-      String first2String = unionOfStrings(input.get(i), input.get(i+1));
-      String badge = unionOfStrings(first2String, input.get(i+2));
+      String first2String = intersectionOfStrings(input.get(i), input.get(i + 1));
+      String badge = intersectionOfStrings(first2String, input.get(i + 2));
       result += charToPriority(badge.toCharArray()[0]);
     }
     return result;
   }
 
-  public String unionOfStrings(String master, String string){
-    Node root = new Node();
+  public String intersectionOfStrings(String master, String string) {
+    BinaryTree tree = new BinaryTree();
     String result = "";
-    string.chars().forEach(ch -> BinaryTree.insert(ch, root));
+    string.chars().forEach(ch -> tree.insert(ch));
     for (char ch : master.toCharArray()) {
-      if (BinaryTree.hasValue(ch, root)) {
+      if (tree.search(ch) != null) {
         result += ch;
       }
     }

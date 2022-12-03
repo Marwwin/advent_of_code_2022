@@ -6,7 +6,7 @@ public abstract class Day {
 
   public Day(String day) {
     this.day = day;
-    this.startTime = System.currentTimeMillis();
+    this.startTime = System.nanoTime();
   }
 
   public void printResults() {
@@ -16,8 +16,8 @@ public abstract class Day {
     System.out.print("Part 2: ");
     System.out.println(this.part2());
 
-    long endTime = System.currentTimeMillis();
-    System.out.println("Took " + (endTime - startTime) + " ms");
+    long endTime = System.nanoTime();
+    System.out.println("Took " + (endTime - startTime) /1000 + " μs");
     System.out.println();
 
   }

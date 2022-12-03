@@ -12,52 +12,92 @@ public class BinaryTreeTest {
 
   @Test
   public void shouldCreateTree() {
-    Node root = new Node();
-    BinaryTree.insert(5, root);
-    assertEquals(root.value(), 5);
+    BinaryTree tree = new BinaryTree();
+    tree.insert(5);
+    assertEquals(tree.getRoot().value(), 5);
   }
 
   @Test
   public void shouldInsertALowerNumberToTheLeft() {
-    Node root = new Node();
-
-    BinaryTree.insert(5, root);
-    assertEquals(root.value(), 5);
-    BinaryTree.insert(3, root);
-    assertEquals(root.left().value(), 3);
+    BinaryTree tree = new BinaryTree();
+    tree.insert(5);
+    assertEquals(tree.getRoot().value(), 5);
+    tree.insert(3);
+    assertEquals(tree.getRoot().left().value(), 3);
   }
   @Test
   public void shouldInsertAHigherNumberToTheRight() {
-    Node root = new Node();
-
-    BinaryTree.insert(5, root);
-    assertEquals(root.value(), 5);
-    BinaryTree.insert(6, root);
-    assertEquals(root.right().value(), 6);
+    BinaryTree tree = new BinaryTree();
+    tree.insert(5);
+    assertEquals(tree.getRoot().value(), 5);
+    tree.insert(6);
+    assertEquals(tree.getRoot().right().value(), 6);
   }
   @Test
   public void shouldInsertANumberCorrectly() {
-    Node root = new Node();
-
-    BinaryTree.insert(5, root);
-    assertEquals(root.value(), 5);
-    BinaryTree.insert(9, root);
-    assertEquals(root.right().value(), 9);
-    BinaryTree.insert(7, root);
-    assertEquals(root.right().left().value(), 7);
+    BinaryTree tree = new BinaryTree();
+    tree.insert(5);
+    assertEquals(tree.getRoot().value(), 5);
+    tree.insert(9);
+    assertEquals(tree.getRoot().right().value(), 9);
+    tree.insert(7);
+    assertEquals(tree.getRoot().right().left().value(), 7);
   }
 
   @Test
-  public void shouldReturnTrueIfValueExists(){
-    Node root = new Node();
-    BinaryTree.insert(5, root);
-    BinaryTree.insert(2, root);
-    BinaryTree.insert(42, root);
-    BinaryTree.insert(8, root);
-    BinaryTree.insert(4, root);
-    assertTrue(BinaryTree.hasValue(5, root));
-    assertTrue(BinaryTree.hasValue(2, root));
+  public void searchShouldReturnNodeIfValueExists(){
+    BinaryTree tree = new BinaryTree();
+    tree.insert(5);
+    tree.insert(2);
+    tree.insert(42);
+    tree.insert(8);
+    tree.insert(4);
+    assertEquals(tree.search(5).value(), 5);
+    assertEquals(tree.search(2).value(), 2);
+  }
+  @Test
+  public void shouldDeleteLeafNode(){
+    BinaryTree tree = new BinaryTree();
+    tree.insert(5);
+    tree.insert(3);
+    tree.insert(6);
 
+    tree.delete(3);
+    tree.delete(6);
+    
+    Node root = tree.getRoot();
+    assertEquals(root.left(), null);
+    assertEquals(root.right(), null);
+  }
+  @Test
+  public void shouldDeleteFullNode(){
+    BinaryTree tree = new BinaryTree();
+    tree.insert(10);
+    tree.insert(4);
+    tree.insert(8);
+    tree.insert(3);
+    tree.insert(5);
+    tree.insert(9);
+    tree.insert(1);
 
+    tree.delete(4);
+
+    Node root = tree.getRoot();
+    assertEquals(root.left().value(), 8);
+    assertEquals(root.left().left().value(), 5);
+    assertEquals(root.left().right().value(), 9);
+    assertEquals(root.left().left().left().value(), 3);
+  }
+  @Test
+  public void shouldDeleteLeafNodeWithOneChild(){
+    BinaryTree tree = new BinaryTree();
+    tree.insert(10);
+    tree.insert(4);
+    tree.insert(8);
+    
+    tree.delete(4);
+
+    Node root = tree.getRoot();
+    assertEquals(root.left().value(), 8);
   }
 }

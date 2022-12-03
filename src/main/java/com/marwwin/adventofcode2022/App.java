@@ -12,7 +12,7 @@ public class App {
     public static void main(String[] args) throws IOException {
         showHeader();
 
-        long startTime = System.currentTimeMillis();
+        long startTime = System.nanoTime();
 
         Day1 day1 = new Day1(false);
         day1.printResults();
@@ -20,35 +20,11 @@ public class App {
         Day2 day2 = new Day2(false);
         day2.printResults();
 
-        long endTime = System.currentTimeMillis();
-        System.out.println("All solutions took " + (endTime - startTime) + " ns");
-
         Day3 day3 = new Day3(false);
+        day3.printResults();
 
-        int runs = 10000;
-        long s1Time = System.nanoTime();
-        for (int i = 0; i < runs; i++)
-            day3.part1();
-        long e1Time = System.nanoTime();
-        System.out.println("Part 1 Set intersection " + (e1Time - s1Time) / runs + " ns");
-
-        long s2Time = System.nanoTime();
-        for (int i = 0; i < runs; i++)
-            day3.part1BT();
-        long e2Time = System.nanoTime();
-        System.out.println("Part 1 BinaryTree " + (e2Time - s2Time) / runs + " ns");
-
-        long s3Time = System.nanoTime();
-        for (int i = 0; i < runs; i++)
-            day3.part2();
-        long e3Time = System.nanoTime();
-        System.out.println("Part 2 Set intersection " + (e3Time - s3Time) / runs + " ns");
-
-        long s4Time = System.nanoTime();
-        for (int i = 0; i < runs; i++)
-            day3.part2BT();
-        long e4Time = System.nanoTime();
-        System.out.println("Part 2 BinaryTree " + (e4Time - s4Time) / runs + " ms");
+        long endTime = System.nanoTime();
+        System.out.println("All solutions took " + (endTime - startTime) /1000 + " μs");
 
     }
 
