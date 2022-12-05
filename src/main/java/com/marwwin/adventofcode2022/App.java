@@ -15,6 +15,7 @@ import com.marwwin.adventofcode2022.day4.Day4;
 import com.marwwin.adventofcode2022.day5.CargoCrane;
 import com.marwwin.adventofcode2022.day5.Day5;
 import com.marwwin.adventofcode2022.day5.Move;
+import com.marwwin.adventofcode2022.day2Functional.Day2Functional;
 
 public class App {
     public static void main(String[] args) throws IOException {
@@ -24,6 +25,8 @@ public class App {
 
         Day1 day1 = new Day1(false);
         day1.printResults();
+
+        long startTime = System.currentTimeMillis();
 
         Day2 day2 = new Day2(false);
         day2.printResults();
