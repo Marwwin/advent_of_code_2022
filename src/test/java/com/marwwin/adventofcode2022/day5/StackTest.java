@@ -16,15 +16,24 @@ public class StackTest {
   @Test
   public void shouldAddElementToStack() {
     Stack stack = new Stack();
-    stack.add('A');
+    stack.push('A');
     assertFalse(stack.isEmpty());
   }
 
   @Test
   public void shouldReturnTopElement() {
     Stack stack = new Stack();
-    stack.add('A');
-    stack.add('B');
-    assertEquals(stack.getTop(), 'B');
+    stack.push('A');
+    stack.push('B');
+    assertEquals(stack.top(), 'B');
+  }
+  @Test
+  public void shouldRemoveTopElement() {
+    Stack stack = new Stack();
+    stack.push('A');
+    stack.push('B');
+    assertEquals(stack.pop(), 'B');
+    assertEquals(stack.top(), 'A');
+
   }
 }

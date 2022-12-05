@@ -16,28 +16,32 @@ public class Day5Test {
   }
 
   @Test
-  public void shouldReturnIndexOfEmptyElement(){
-  Day5 day5 = new Day5(true);
-  assertEquals(4,   day5.indexOfEmptyElement());
-  }
-  @Test
-  public void shouldSolvePart1TestData(){
+  public void shouldReturnIndexOfEmptyElement() {
     Day5 day5 = new Day5(true);
-    assertEquals(day5.part1Str(), "CMZ");
+    assertEquals(4, day5.emptyRow());
   }
+
   @Test
-  public void shouldSolvePart1RealData(){
-    Day5 day5 = new Day5(false);
-    assertEquals(day5.part1Str(), "LJSVLTWQM");
-  }
-  @Test
-  public void shouldSolvePart2TestData(){
+  public void shouldSolvePart1TestData() {
     Day5 day5 = new Day5(true);
-    assertEquals(day5.part2Str(), "MCD");
+    assertEquals((String) day5.part1(), "CMZ");
   }
+
   @Test
-  public void shouldSolvePart2RealData(){
+  public void shouldSolvePart1RealData() {
     Day5 day5 = new Day5(false);
-    assertEquals(day5.part2Str(), "LJSVLTWQM");
+    assertEquals((String) day5.part1(), "LJSVLTWQM");
+  }
+
+  @Test
+  public void shouldSolvePart2TestData() {
+    Day5 day5 = new Day5(true);
+    assertEquals((String) day5.part2(), "MCD");
+  }
+
+  @Test
+  public void shouldSolvePart2RealData() {
+    Day5 day5 = new Day5(false);
+    assertEquals((String) day5.part2(), "BRQWDBBJM");
   }
 }

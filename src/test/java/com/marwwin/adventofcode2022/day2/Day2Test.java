@@ -12,13 +12,13 @@ public class Day2Test {
   @Test
   public void part1ShouldGiveCorrectOuputForTestInput() {
     Day2 day2 = new Day2(true);
-    assertEquals(day2.part1(), 15);
+    assertEquals((int) day2.part1(), 15);
   }
 
   @Test
   public void part1ShouldGiveCorrectOuputForRealInput() {
     Day2 day2 = new Day2(false);
-    assertEquals(day2.part1(), 11475);
+    assertEquals((int) day2.part1(), 11475);
   }
 
   @Test
@@ -110,13 +110,13 @@ public class Day2Test {
   @Test
   public void part2ShouldGiveCorrectOuputForTestInput() {
     Day2 day2 = new Day2(true);
-    assertEquals(day2.part2(), 12);
+    assertEquals((int) day2.part2(), 12);
   }
 
   @Test
   public void part2ShouldGiveCorrectOuputForRealInput() {
     Day2 day2 = new Day2(false);
-    assertEquals(day2.part2(), 16862);
+    assertEquals((int) day2.part2(), 16862);
   }
 
   @Test

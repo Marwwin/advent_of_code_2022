@@ -10,22 +10,22 @@ public class Day4Test {
   @Test
   public void shouldSolvePart1TrainData(){
     Day4 day4 = new Day4(true);
-    assertEquals(day4.part1(), 2);
+    assertEquals((int) day4.part1(), 2);
   }
   @Test
   public void shouldSolvePart1RealData(){
     Day4 day4 = new Day4(false);
-    assertEquals(day4.part1(), 547);
+    assertEquals((int) day4.part1(), 547);
   }
   @Test
   public void shouldSolvePart2TrainData(){
     Day4 day4 = new Day4(true);
-    assertEquals(day4.part2(), 4);
+    assertEquals((int) day4.part2(), 4);
   }
   @Test
   public void shouldSolvePart2RealData(){
     Day4 day4 = new Day4(false);
-    assertEquals(day4.part2(), 843);
+    assertEquals((int) day4.part2(), 843);
   }
   @Test
   public void shouldCreateSection(){

@@ -16,10 +16,10 @@ public class Day1 extends Day{
     input = AoC.getInputAsInteger("day1", test);
     createListOfElves(input).forEach(leaderBoard::add);
   }
-  public int part1() {
+  public Integer part1() {
     return leaderBoard.get(0);
   }
-  public int part2() {
+  public Integer part2() {
     return leaderBoard.sum();
   }
   public static List<Integer> createListOfElves(List<Integer> input) {

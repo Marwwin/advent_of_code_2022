@@ -7,7 +7,6 @@ import com.marwwin.adventofcode2022.aoc.AoC;
 import com.marwwin.adventofcode2022.aoc.Day;
 
 public class Day5 extends Day {
-
   List<String> input;
 
   public Day5(boolean test) {
@@ -15,44 +14,29 @@ public class Day5 extends Day {
     input = AoC.getInputAsString("day5", test);
   }
 
-  public String part1Str() {
-    List<String>[] inputs = splitInput();
-    CargoCrane crane = new CargoCrane(inputs[0]);
-    for (String s : inputs[1]){
-      crane.move(s);
-    }
-    return crane.getTopItems();
-  }
-
-  public String part2Str() {
-    List<String>[] inputs = splitInput();
-    CargoCrane crane = new CargoCrane(inputs[0]);
-    for (String s : inputs[1]){
-      crane.moveAll(s);
-    }
-    return crane.getTopItems();
-  }
   @Override
-  public int part2() {
-    // TODO Auto-generated method stub
-    return 0;
+  public String part1() {
+    List<String>[] inputs = splitInput();
+    CargoCrane crane = new CargoCrane(inputs[0]);
+    inputs[1].forEach(crane::move);
+    return crane.getTopItems();
   }
 
-  public List[] splitInput() {
-    List<String> first = new ArrayList<>(input.subList(0, (indexOfEmptyElement())));
-    List<String> second = new ArrayList<>(
-        input.subList(indexOfEmptyElement(), input.size()));
+  @Override
+  public String part2() {
+    List<String>[] inputs = splitInput();
+    CargoCrane crane = new CargoCrane(inputs[0]);
+    inputs[1].forEach(crane::moveAll);
+    return crane.getTopItems();
+  }
+
+  public List<String>[] splitInput() {
+    List<String> first = new ArrayList<>(input.subList(0, emptyRow()));
+    List<String> second = new ArrayList<>(input.subList(emptyRow(), input.size()));
     return new List[] { first, second };
   }
 
-  public int indexOfEmptyElement() {
+  public int emptyRow() {
     return input.indexOf("");
   }
-
-  @Override
-  public int part1() {
-    // TODO Auto-generated method stub
-    return 0;
-  }
-
 }

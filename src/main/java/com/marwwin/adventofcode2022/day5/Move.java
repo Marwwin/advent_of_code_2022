@@ -4,35 +4,30 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Move {
-  int amount;
-  int from;
-  int to;
+  private int amount;
+  private int from;
+  private int to;
 
   public Move(String string) {
-    Pattern p = Pattern.compile("\\d+");
-    Matcher m = p.matcher(string);
-    int i = 0;
-    while (m.find()) {
-      System.out.println(m.group());
-      if (i == 0)
-        amount = Integer.parseInt(m.group());
-      if (i == 1)
-        from = Integer.parseInt(m.group());
-      if (i == 2)
-        to = Integer.parseInt(m.group());
-      i++;
-    }
+    Pattern pattern = Pattern.compile("\\d+");
+    Matcher match = pattern.matcher(string);
+    match.find();
+    amount = Integer.parseInt(match.group());
+    match.find();
+    from = Integer.parseInt(match.group());
+    match.find();
+    to = Integer.parseInt(match.group());
   }
 
-  public int getAmount() {
+  public int amount() {
     return amount;
   }
 
-  public int getFrom() {
+  public int from() {
     return from - 1;
   }
 
-  public int getTo() {
+  public int to() {
     return to - 1;
   }
 }

@@ -16,7 +16,7 @@ public class Day3 extends Day {
   }
 
   @Override
-  public int part1() {
+  public Integer part1() {
     int result = 0;
     for (String rucksack : input) {
       BinaryTree tree = new BinaryTree();
@@ -32,12 +32,8 @@ public class Day3 extends Day {
     return result;
   }
 
-  private int charToPriority(int e) {
-    return e >= 97 ? e - 96 : e - 38;
-  }
-
   @Override
-  public int part2() {
+  public Integer part2() {
     int result = 0;
     int i = 0;
     String[] group = new String[3];
@@ -50,6 +46,10 @@ public class Day3 extends Day {
       }
     }
     return result;
+  }
+
+  private int charToPriority(int e) {
+    return e >= 97 ? e - 96 : e - 38;
   }
 
   private Set<Character> intersectionOfGroup(String[] group) {
@@ -69,8 +69,6 @@ public class Day3 extends Day {
     }
     return result;
   }
-
-
 
   public int part2BT() {
     int result = 0;

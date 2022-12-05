@@ -15,7 +15,7 @@ public class Day4 extends Day {
   }
 
   @Override
-  public int part1() {
+  public Integer part1() {
     int count = 0;
     for (String pair : input) {
       count += new Assignment(pair).isOneSectionFullyContainedInTheOther() ? 1 : 0;
@@ -24,7 +24,7 @@ public class Day4 extends Day {
   }
 
   @Override
-  public int part2() {
+  public Integer part2() {
     int count = 0;
     for (String pair : input) {
       count += new Assignment(pair).hasOverlap() ? 1 : 0;

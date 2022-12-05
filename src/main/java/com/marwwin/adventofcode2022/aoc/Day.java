@@ -22,7 +22,7 @@ public abstract class Day {
 
   }
 
-  abstract public int part1();
+  abstract public Object part1();
 
-  abstract public int part2();
+  abstract public Object part2();
 }

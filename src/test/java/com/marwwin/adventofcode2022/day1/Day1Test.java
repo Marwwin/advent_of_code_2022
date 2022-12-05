@@ -7,24 +7,24 @@ public class Day1Test {
   @Test
   public void part1TestData() {
     Day1 day1 = new Day1(true);
-    assertEquals(day1.part1(), 24000);
+    assertEquals((int) day1.part1(), 24000);
   }
 
   @Test
   public void part1RealData() {
     Day1 day1 = new Day1(false);
-    assertEquals(day1.part1(), 72070);
+    assertEquals((int) day1.part1(), 72070);
   }
 
   @Test
   public void part2TestData() {
     Day1 day1 = new Day1(true);
-    assertEquals(day1.part2(), 45000);
+    assertEquals((int) day1.part2(), 45000);
   }
 
   @Test
   public void part2RealData() {
     Day1 day1 = new Day1(false);
-    assertEquals(day1.part2(), 211805);
+    assertEquals((int) day1.part2(), 211805);
   }
 }

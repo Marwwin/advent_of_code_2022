@@ -14,7 +14,7 @@ public class Day2 extends Day {
   }
 
   @Override
-  public int part1() {
+  public Integer part1() {
     RockPaperScissorsCalculator rps = new RockPaperScissorsCalculator();
     for (String hand : input)
       rps.play(new RockPaperScissorsGamePart1(hand));
@@ -22,7 +22,7 @@ public class Day2 extends Day {
   }
 
   @Override
-  public int part2() {
+  public Integer part2() {
     RockPaperScissorsCalculator rps = new RockPaperScissorsCalculator();
     for (String hand : input)
       rps.play(new RockPaperScissorsGamePart2(hand));

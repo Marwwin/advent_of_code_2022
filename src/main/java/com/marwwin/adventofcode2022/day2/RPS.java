@@ -1,4 +1,4 @@
-package com.marwwin.adventofcode2022.day2Functional;
+package com.marwwin.adventofcode2022.day2;
 
 import java.util.HashMap;
 

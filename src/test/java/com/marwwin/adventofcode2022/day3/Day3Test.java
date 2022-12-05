@@ -4,8 +4,6 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import com.marwwin.adventofcode2022.aoc.Day;
-
 public class Day3Test {
   @Test
   public void shouldSolveTestDataPart1(){
@@ -20,22 +18,22 @@ public class Day3Test {
   @Test
   public void binTreeShouldSolveTestDataPart1(){
     Day3 day3 = new Day3(true);
-    assertEquals(day3.part1(), 157);
+    assertEquals((int) day3.part1(), 157);
   }
   @Test
   public void binTreeShouldSolveRealDataPart1(){
     Day3 day3 = new Day3(false);
-    assertEquals(day3.part1(), 8401);
+    assertEquals((int) day3.part1(), 8401);
   }
   @Test
   public void shouldSolveTestDataPart2(){
     Day3 day3 = new Day3(true);
-    assertEquals(day3.part2(), 70);
+    assertEquals((int) day3.part2(), 70);
   }
   @Test
   public void shouldSolveTestRealPart2(){
     Day3 day3 = new Day3(false);
-    assertEquals(day3.part2(), 2641);
+    assertEquals((int) day3.part2(), 2641);
   }
   @Test
   public void binTreeShouldSolveTestDataPart2(){

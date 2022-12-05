@@ -16,7 +16,7 @@ public class CargoCraneTest {
     input.add("[Z] [M] [P]");
     input.add(" 1   2   3 ");
     CargoCrane crane = new CargoCrane(input);
-    assertEquals(3, crane.amountOfStack());
+    assertEquals(3, crane.amountOfStacks());
   }
   @Test
   public void shouldParseInputStacks(){
@@ -34,7 +34,7 @@ public class CargoCraneTest {
     input.add("[Z] [M] [P]");
     input.add(" 1   2   3 ");
     CargoCrane crane = new CargoCrane(input);
-    assertEquals(3, crane.amountOfStack());
+    assertEquals(3, crane.amountOfStacks());
     assertEquals(crane.getTopItems(), "NDP");
   }
   @Test

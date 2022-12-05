@@ -1,9 +1,9 @@
-package com.marwwin.adventofcode2022.day2Functional;
+package com.marwwin.adventofcode2022.day2;
 
 import java.util.HashMap;
 import java.util.List;
 
-import com.marwwin.adventofcode2022.aoc.Utils;
+import com.marwwin.adventofcode2022.aoc.AoC;
 
 public class Day2Functional {
 
@@ -31,7 +31,7 @@ public class Day2Functional {
     part2Table.put("C Z", 1 + 6);
 
     RPS rps = (table) -> {
-      List<String> input = Utils.getInputAsString("day2", false);
+      List<String> input = AoC.getInputAsString("day2", false);
       int result = input.stream()
           .map(e -> table.get(e))
           .reduce(0, (a, c) -> a + c);
