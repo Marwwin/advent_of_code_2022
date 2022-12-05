@@ -42,7 +42,7 @@ public class CargoCrane {
   public String getTopItems() {
     String result = "";
     for (Stack s : stacks) {
-      result += s.top();
+      result += s.peek();
     }
     return result;
   }

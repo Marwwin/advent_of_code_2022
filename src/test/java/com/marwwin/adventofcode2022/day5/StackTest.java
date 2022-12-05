@@ -25,7 +25,7 @@ public class StackTest {
     Stack stack = new Stack();
     stack.push('A');
     stack.push('B');
-    assertEquals(stack.top(), 'B');
+    assertEquals(stack.peek(), 'B');
   }
   @Test
   public void shouldRemoveTopElement() {
@@ -33,7 +33,7 @@ public class StackTest {
     stack.push('A');
     stack.push('B');
     assertEquals(stack.pop(), 'B');
-    assertEquals(stack.top(), 'A');
+    assertEquals(stack.peek(), 'A');
 
   }
 }

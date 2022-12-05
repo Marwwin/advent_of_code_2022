@@ -6,7 +6,7 @@ import java.util.List;
 public class Stack {
   private List<Character> stack = new ArrayList<Character>();;
 
-  public void push(Character element) {
+  public void push(char element) {
     stack.add(element);
   }
 
@@ -14,7 +14,7 @@ public class Stack {
     return stack.remove(stack.size() - 1);
   }
 
-  public char top() {
+  public char peek() {
     return this.isEmpty()
         ? ' '
         : stack.get(stack.size() - 1);
