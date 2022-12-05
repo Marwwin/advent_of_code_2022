@@ -10,6 +10,9 @@ public class BinaryTree {
     return root;
   }
 
+  ////////////
+  // INSERT //
+  ////////////
   public void insert(int value) {
     Node node = new Node(value);
     if (root == null) {
@@ -42,6 +45,10 @@ public class BinaryTree {
     insertHelper(node, root.right());
   }
 
+  ////////////
+  // SEARCH //
+  ////////////
+
   public Node search(int value) {
     return searchHelper(value, root);
   }
@@ -56,14 +63,25 @@ public class BinaryTree {
     return node;
   }
 
-  public Node getParent(int value) {
+  ////////////
+  // DELETE //
+  ////////////
+
+  public void delete(int value) {
+    Node parent = getParentWithChildContaining(value);
+    if (parent == null)
+      return;
+    deleteHelper(value, parent);
+  }
+
+  public Node getParentWithChildContaining(int value) {
     return getParentHelper(value, root);
   }
 
   private Node getParentHelper(int value, Node node) {
     if (node == null)
       return null;
-    if (isChild(value, node))
+    if (doesChildContainValue(value, node))
       return node;
     if (value < node.value())
       return getParentHelper(value, node.left());
@@ -72,16 +90,9 @@ public class BinaryTree {
     return null;
   }
 
-  private boolean isChild(int value, Node node) {
+  private boolean doesChildContainValue(int value, Node node) {
     return (node.left() != null && value == node.left().value())
         || (node.right() != null && value == node.right().value());
-  }
-
-  public void delete(int value) {
-    Node parent = getParent(value);
-    if (parent == null)
-      return;
-    deleteHelper(value, parent);
   }
 
   private void deleteHelper(int value, Node parent) {
@@ -89,37 +100,45 @@ public class BinaryTree {
     Node right = parent.right();
 
     if (left != null && value == left.value()) {
-      if (isLeaf(left)) {
-        parent.setLeft(null);
-        return;
-      }
-      if (left.left() == null) {
-        parent.setLeft(left.right());
-        return;
-      }
-      if (left.right() == null) {
-        parent.setLeft(left.left());
-        return;
-      }
-      insertHelper(left.left(), left.right());
-      parent.setLeft(left.right());
+      deleteLeft(left, parent);
     }
     if (right != null && value == right.value()) {
-      if (isLeaf(right)) {
-        parent.setRight(null);
-        return;
-      }
-      if (right.left() == null) {
-        parent.setRight(right.right());
-        return;
-      }
-      if (right.right() == null) {
-        parent.setRight(right.left());
-        return;
-      }
-      insertHelper(right.left(), right.right());
-      parent.setRight(right.right());
+      deleteRight(right, parent);
     }
+  }
+
+  private void deleteLeft(Node node, Node parent) {
+    if (isLeaf(node)) {
+      parent.setLeft(null);
+      return;
+    }
+    if (node.left() == null) {
+      parent.setLeft(node.right());
+      return;
+    }
+    if (node.right() == null) {
+      parent.setLeft(node.left());
+      return;
+    }
+    insertHelper(node.left(), node.right());
+    parent.setLeft(node.right());
+  }
+
+  private void deleteRight(Node node, Node parent) {
+    if (isLeaf(node)) {
+      parent.setRight(null);
+      return;
+    }
+    if (node.left() == null) {
+      parent.setRight(node.right());
+      return;
+    }
+    if (node.right() == null) {
+      parent.setRight(node.left());
+      return;
+    }
+    insertHelper(node.left(), node.right());
+    parent.setRight(node.right());
   }
 
   private boolean isLeaf(Node node) {
@@ -127,6 +146,10 @@ public class BinaryTree {
       return true;
     return false;
   }
+
+  ///////////
+  // PRINT //
+  ///////////
 
   public void printTree() {
     printTreeHelper(root);
