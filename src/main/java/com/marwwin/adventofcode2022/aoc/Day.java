@@ -21,7 +21,6 @@ public abstract class Day {
     System.out.println();
 
   }
-
   abstract public Object part1();
 
   abstract public Object part2();

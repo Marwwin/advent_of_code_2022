@@ -77,5 +77,4 @@ public class RockPaperScissorsGamePart2 extends RockPaperScissorsGame {
   public Hand getPlayer() {
     return player;
   }
-
 }

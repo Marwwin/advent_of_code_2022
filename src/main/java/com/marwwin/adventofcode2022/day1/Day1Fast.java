@@ -10,7 +10,6 @@ import com.marwwin.adventofcode2022.aoc.LeaderBoard;
 public class Day1Fast {
   public static LeaderBoard goFast() {
     LeaderBoard leaderBoard = new LeaderBoard(3);
-
     try {
       String input = "/input.txt";
       File file = new File(getPath("day1") + input);

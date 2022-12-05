@@ -56,5 +56,4 @@ public class AoC {
     return string.chars()
         .mapToObj(e -> (char) e).collect(Collectors.toSet());
   }
-
 }

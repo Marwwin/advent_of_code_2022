@@ -38,5 +38,4 @@ public class Day5 extends Day {
     moves.forEach(crane::moveAll);
     return crane.getTopItems();
   }
-
 }

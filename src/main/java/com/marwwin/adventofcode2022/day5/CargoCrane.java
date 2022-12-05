@@ -1,5 +1,4 @@
 package com.marwwin.adventofcode2022.day5;
-
 import java.util.List;
 
 public class CargoCrane {

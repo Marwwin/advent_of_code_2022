@@ -9,5 +9,4 @@ public abstract class RockPaperScissorsGame {
   public abstract Outcome getOutcome();
 
   public abstract Hand getPlayer();
-
 }

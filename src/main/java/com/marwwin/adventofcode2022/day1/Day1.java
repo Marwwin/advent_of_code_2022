@@ -2,7 +2,6 @@ package com.marwwin.adventofcode2022.day1;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import com.marwwin.adventofcode2022.aoc.Day;
 import com.marwwin.adventofcode2022.aoc.LeaderBoard;
 import com.marwwin.adventofcode2022.aoc.AoC;

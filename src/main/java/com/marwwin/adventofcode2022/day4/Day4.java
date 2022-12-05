@@ -31,5 +31,4 @@ public class Day4 extends Day {
     }
     return count;
   }
-
 }

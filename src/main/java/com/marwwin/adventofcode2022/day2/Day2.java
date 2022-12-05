@@ -28,5 +28,4 @@ public class Day2 extends Day {
       rps.play(new RockPaperScissorsGamePart2(hand));
     return rps.getPoints();
   }
-
 }

@@ -1,5 +1,4 @@
 package com.marwwin.adventofcode2022.day5;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 

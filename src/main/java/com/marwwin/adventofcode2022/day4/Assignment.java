@@ -23,14 +23,12 @@ public class Assignment {
       return true;
     if (second.start() <= first.start() && second.end() >= first.end())
       return true;
-
     return false;
   }
 
   public boolean hasOverlap() {
     if (first.end() < second.start() || first.start() > second.end())
       return false;
-
     return true;
   }
 }
