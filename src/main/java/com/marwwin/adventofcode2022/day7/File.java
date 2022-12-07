@@ -16,4 +16,8 @@ public class File {
     this.size = command.size();
     this.name = command.destination();
   }
+
+  public void print() {
+    System.out.println(name + " " + size);
+  }
 }

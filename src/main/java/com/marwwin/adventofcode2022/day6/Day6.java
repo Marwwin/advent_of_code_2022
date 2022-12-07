@@ -1,7 +1,7 @@
 package com.marwwin.adventofcode2022.day6;
 
-import com.marwwin.adventofcode2022.aoc.AoC;
-import com.marwwin.adventofcode2022.aoc.Day;
+import com.marwwin.aoc.AoC;
+import com.marwwin.aoc.Day;
 
 public class Day6 extends Day {
 

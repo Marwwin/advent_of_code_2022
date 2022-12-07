@@ -43,9 +43,9 @@ public class PacketFinderTest {
     finder.add('b');
     assertEquals(finder.isFound(), true);
   }
-  @Test
-  public void shouldSolve(){
-    PacketFinder finder = new PacketFinder();
-    assertEquals(finder.solve("bvwbjplbgvbhsrlpgdmjqwftvncz",3), 5);
-  }
+  //@Test
+  //public void shouldSolve(){
+  //  PacketFinder finder = new PacketFinder();
+  //  assertEquals(finder.solve("bvwbjplbgvbhsrlpgdmjqwftvncz",3), 5);
+  //}
 }

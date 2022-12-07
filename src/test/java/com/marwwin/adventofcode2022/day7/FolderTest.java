@@ -9,9 +9,19 @@ public class FolderTest {
     Folder folder = new Folder("/");
     assertEquals(folder.name(), "/");
   }
+
   @Test
   public void shouldCreateASubFolder() {
     Folder folder = new Folder("/");
-    assertEquals(folder.name(), "/");
+    folder.addSubFolder(new Folder("a"));
+    assertEquals(folder.subFolders().get(0).name(), "a");
+  }
+  @Test
+  public void shouldCreateAFileInFolder() {
+    Folder folder = new Folder("/");
+    folder.addFile(new File(new Command("1234 abc.txt")));
+    assertEquals(folder.files().get(0).name(), "abc.txt");
+    assertEquals(folder.files().get(0).size(), 1234);
+
   }
 }

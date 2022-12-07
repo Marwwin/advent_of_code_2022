@@ -17,12 +17,12 @@ public class Command {
 
     if (command[0].equals("dir")){
       type = Commands.DIRECTORY;
-      destination = command[1];
+      destination = command[1].trim();
       return;
     }
     if (command[0].equals("$") && command[1].equals("cd")) {
       type = Commands.CHANGE_DIRECTORY;
-      destination = command[2];
+      destination = command[2].trim();
       return;
     }
     if (command[0].equals("$") && command[1].equals("ls")) {
@@ -31,7 +31,7 @@ public class Command {
     }
     type = Commands.FILE;
     size = Integer.parseInt(command[0]);
-    destination = command[1];
+    destination = command[1].trim();
   }
 
   public Commands type() {
