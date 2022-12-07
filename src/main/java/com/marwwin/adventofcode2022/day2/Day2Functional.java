@@ -2,7 +2,8 @@ package com.marwwin.adventofcode2022.day2;
 
 import java.util.HashMap;
 import java.util.List;
-import com.marwwin.adventofcode2022.aoc.AoC;
+
+import com.marwwin.aoc.AoC;
 
 public class Day2Functional {
 

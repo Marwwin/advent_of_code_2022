@@ -4,8 +4,8 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import com.marwwin.adventofcode2022.aoc.BinaryTree.BinaryTree;
-import com.marwwin.adventofcode2022.aoc.BinaryTree.Node;
+import com.marwwin.aoc.BinaryTree.BinaryTree;
+import com.marwwin.aoc.BinaryTree.Node;
 
 public class BinaryTreeTest {
 

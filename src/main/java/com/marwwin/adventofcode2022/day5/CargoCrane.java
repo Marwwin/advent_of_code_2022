@@ -1,4 +1,5 @@
 package com.marwwin.adventofcode2022.day5;
+
 import java.util.List;
 
 public class CargoCrane {
@@ -10,8 +11,9 @@ public class CargoCrane {
   }
 
   private void initializeStacks(List<String> input) {
+    int lengthOfOneRow = input.get(0).length();
     int numberOfStacks = input.size() > 0
-        ? (input.get(0).length() + 1) / 4
+        ? (lengthOfOneRow + 1) / 4
         : 0;
     stacks = new Stack[numberOfStacks];
     for (int i = 0; i < numberOfStacks; i++) {
@@ -22,12 +24,16 @@ public class CargoCrane {
   private void populateStacks(List<String> input) {
     if (this.isEmpty())
       return;
+  
+    // We need to populate the stacks from the bottom up to get the order right
+    // Input.size() - 2 since we don't want the last 2 lines of the input 
+    // Since they contain an empty line and the number of the stacks
     for (int i = input.size() - 2; i >= 0; i--) {
-      parseStringToStack(input.get(i));
+      populateStackFromRow(input.get(i));
     }
   }
 
-  public void parseStringToStack(String string) {
+  public void populateStackFromRow(String string) {
     for (int i = 1; i < string.length(); i += 4) {
       if (string.charAt(i) != ' ')
         stacks[stackIndex(i)].push(string.charAt(i));

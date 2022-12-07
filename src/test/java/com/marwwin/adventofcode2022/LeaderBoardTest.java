@@ -3,7 +3,8 @@ package com.marwwin.adventofcode2022;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
-import com.marwwin.adventofcode2022.aoc.LeaderBoard;
+
+import com.marwwin.aoc.LeaderBoard;
 
 public class LeaderBoardTest {
   @Test

@@ -1,4 +1,4 @@
-package com.marwwin.adventofcode2022.aoc;
+package com.marwwin.aoc;
 
 import java.io.BufferedReader;
 import java.io.File;

@@ -1,8 +1,10 @@
 package com.marwwin.adventofcode2022;
 
 import org.junit.Test;
+
+import com.marwwin.aoc.AoC;
+
 import static org.junit.Assert.assertEquals;
-import com.marwwin.adventofcode2022.aoc.AoC;
 
 import java.util.Arrays;
 import java.util.List;

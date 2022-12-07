@@ -1,4 +1,4 @@
-package com.marwwin.adventofcode2022.aoc.BinaryTree;
+package com.marwwin.aoc.BinaryTree;
 
 public class Node {
   int value;

@@ -15,24 +15,22 @@ public class App {
 
         long startTime = System.nanoTime();
 
-        Day1 day1 = new Day1(false);
-        day1.printResults();
+        // Day1 day1 = new Day1(false);
+        // day1.printResults();
+// 
+        // Day2 day2 = new Day2(false);
+        // day2.printResults();
+// 
+        // Day3 day3 = new Day3(false);
+        // day3.printResults();
+// 
+        // Day4 day4 = new Day4(false);
+        // day4.printResults();
+// 
+        // Day5 day5 = new Day5(false);
+        // day5.printResults();
 
-        Day2 day2 = new Day2(false);
-        day2.printResults();
-
-        Day3 day3 = new Day3(false);
-        day3.printResults();
-
-        Day4 day4 = new Day4(false);
-        day4.printResults();
-
-        Day5 day5 = new Day5(false);
-        day5.printResults();
-
-        Day6 day6 = new Day6(false);
-        day6.printResults();
-
+        com.marwwin.adventofcode2021.day1.Day1 day1 = new com.marwwin.adventofcode2021.day1.Day1(false);
         long endTime = System.nanoTime();
         System.out.println("All solutions took " + (endTime - startTime) / 1000 + " μs");
 

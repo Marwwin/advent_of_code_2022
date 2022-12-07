@@ -3,9 +3,9 @@ package com.marwwin.adventofcode2022.day3;
 import java.util.List;
 import java.util.Set;
 
-import com.marwwin.adventofcode2022.aoc.Day;
-import com.marwwin.adventofcode2022.aoc.AoC;
-import com.marwwin.adventofcode2022.aoc.BinaryTree.BinaryTree;
+import com.marwwin.aoc.AoC;
+import com.marwwin.aoc.Day;
+import com.marwwin.aoc.BinaryTree.BinaryTree;
 
 public class Day3 extends Day {
   List<String> input;
@@ -91,5 +91,5 @@ public class Day3 extends Day {
     }
     return result;
   }
-  
+
 }

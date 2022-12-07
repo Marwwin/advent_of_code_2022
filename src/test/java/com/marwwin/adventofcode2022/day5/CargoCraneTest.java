@@ -23,7 +23,7 @@ public class CargoCraneTest {
     List<String> input = new ArrayList<>();
     input.add(" 1   2   3 ");
     CargoCrane crane = new CargoCrane(input);
-    crane.parseStringToStack("[Z] [M] [P]");
+    crane.populateStackFromRow("[Z] [M] [P]");
     assertEquals(crane.getTopItems(), "ZMP");
   }
   @Test

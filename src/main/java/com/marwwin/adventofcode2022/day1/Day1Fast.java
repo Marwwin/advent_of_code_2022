@@ -1,11 +1,12 @@
 package com.marwwin.adventofcode2022.day1;
 
 import java.io.IOException;
+
+import com.marwwin.aoc.LeaderBoard;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-
-import com.marwwin.adventofcode2022.aoc.LeaderBoard;
 
 public class Day1Fast {
   public static LeaderBoard goFast() {

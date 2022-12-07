@@ -2,8 +2,8 @@ package com.marwwin.adventofcode2022.day2;
 
 import java.util.List;
 
-import com.marwwin.adventofcode2022.aoc.Day;
-import com.marwwin.adventofcode2022.aoc.AoC;
+import com.marwwin.aoc.AoC;
+import com.marwwin.aoc.Day;
 
 public class Day2 extends Day {
   List<String> input;

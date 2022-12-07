@@ -2,8 +2,8 @@ package com.marwwin.adventofcode2022.day4;
 
 import java.util.List;
 
-import com.marwwin.adventofcode2022.aoc.AoC;
-import com.marwwin.adventofcode2022.aoc.Day;
+import com.marwwin.aoc.AoC;
+import com.marwwin.aoc.Day;
 
 public class Day4 extends Day {
 

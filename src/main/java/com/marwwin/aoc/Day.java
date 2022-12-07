@@ -1,4 +1,4 @@
-package com.marwwin.adventofcode2022.aoc;
+package com.marwwin.aoc;
 
 public abstract class Day {
   String day;
