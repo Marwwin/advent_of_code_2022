@@ -6,28 +6,32 @@ import org.junit.Test;
 
 public class Day6Test {
   @Test
-  public void shouldWorkForTestDataPart1(){
+  public void shouldWorkForTestDataPart1() {
     Day6 day6 = new Day6(true);
-    assertEquals(day6.part1(), 7);
+    assertEquals((int) day6.part1(), 7);
   }
+
+ // @Test
+ // public void shouldWorkForTest1() {
+ //   Day6 day6 = new Day6(true);
+ //   assertEquals(day6.solvePart1("bvwbjplbgvbhsrlpgdmjqwftvncz"), 5);
+ // }
+//
+ // @Test
+ // public void shouldWorkForTest2() {
+ //   Day6 day6 = new Day6(true);
+ //   assertEquals(day6.solvePart1("nppdvjthqldpwncqszvftbrmjlhg"), 6);
+ // }
+
   @Test
-  public void shouldWorkForTest1(){
-    Day6 day6 = new Day6(true);
-    assertEquals(day6.solvePart1("bvwbjplbgvbhsrlpgdmjqwftvncz"), 5);
-  }
-  @Test
-  public void shouldWorkForTest2(){
-    Day6 day6 = new Day6(true);
-    assertEquals(day6.solvePart1("nppdvjthqldpwncqszvftbrmjlhg"), 6);
-  }
-  @Test
-  public void shouldWorkForRealDataPart1(){
+  public void shouldWorkForRealDataPart1() {
     Day6 day6 = new Day6(false);
-    assertEquals(day6.part1(),1625);
+    assertEquals((int)day6.part1(), 1625);
   }
+
   @Test
-  public void shouldWorkForRealDataPart2(){
+  public void shouldWorkForRealDataPart2() {
     Day6 day6 = new Day6(false);
-    assertEquals(day6.part2(), 2250);
+    assertEquals((int)day6.part2(), 2250);
   }
 }

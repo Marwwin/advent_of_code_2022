@@ -3,15 +3,20 @@ package com.marwwin.adventofcode2022.day6;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class PacketFinder {
-  private List<Integer> memory;
-  private int target;
+  private List<Integer> memory = new ArrayList<Integer>();
+  private int targetLength;
 
-  public PacketFinder(int length) {
-    memory = new ArrayList<Integer>();
-    target = length;
+  public int solve(String input, int length) {
+    clearMemory();
+    setTargetLength(length);
+    for (int i = 0; i < input.length(); i++) {
+      add(input.charAt(i));
+      if (isFound())
+        return i + 1;
+    }
+    return 0;
   }
 
   public void add(int c) {
@@ -22,16 +27,23 @@ public class PacketFinder {
   }
 
   public boolean isFull() {
-    return memory.size() == target;
+    return memory.size() == targetLength;
   }
 
   public boolean isFound() {
-    Set<Integer> result = new HashSet<Integer>(memory);
-    return result.size() == target;
+    return new HashSet<Integer>(memory).size() == targetLength;
   }
 
   public int size() {
     return memory.size();
+  }
+
+  public void setTargetLength(int targetLength) {
+    this.targetLength = targetLength;
+  }
+
+  public void clearMemory(){
+    memory = new ArrayList<Integer>();
   }
 
   public void print() {

@@ -19,7 +19,7 @@ public class CargoCraneTest {
     assertEquals(3, crane.amountOfStacks());
   }
   @Test
-  public void shouldParseInputStacks(){
+  public void shouldaddInputStacks(){
     List<String> input = new ArrayList<>();
     input.add(" 1   2   3 ");
     CargoCrane crane = new CargoCrane(input);

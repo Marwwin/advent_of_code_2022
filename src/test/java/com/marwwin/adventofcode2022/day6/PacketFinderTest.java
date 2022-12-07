@@ -7,13 +7,9 @@ import org.junit.Test;
 public class PacketFinderTest {
 
   @Test
-  public void shouldCreatePacketFinder(){
-    PacketFinder finder = new PacketFinder(3);
-  }
-
-  @Test
   public void shouldAddCharsToMemory(){
-    PacketFinder finder = new PacketFinder(3);
+    PacketFinder finder = new PacketFinder();
+    finder.setTargetLength(3);
     finder.add('f');
     assertEquals(finder.size(), 1);
     finder.add('f');
@@ -23,7 +19,8 @@ public class PacketFinderTest {
   }
   @Test
   public void shouldReturnTrueWhenFull(){
-    PacketFinder finder = new PacketFinder(3);
+    PacketFinder finder = new PacketFinder();
+    finder.setTargetLength(3);
     finder.add('f');
     assertEquals(finder.isFound(), false);
     finder.add('d');
@@ -33,7 +30,8 @@ public class PacketFinderTest {
   }
   @Test
   public void shouldReturn(){
-    PacketFinder finder = new PacketFinder(3);
+    PacketFinder finder = new PacketFinder();
+    finder.setTargetLength(3);
     finder.add('f');
     assertEquals(finder.isFound(), false);
     finder.add('d');
@@ -44,5 +42,10 @@ public class PacketFinderTest {
     assertEquals(finder.isFound(), false);
     finder.add('b');
     assertEquals(finder.isFound(), true);
+  }
+  @Test
+  public void shouldSolve(){
+    PacketFinder finder = new PacketFinder();
+    assertEquals(finder.solve("bvwbjplbgvbhsrlpgdmjqwftvncz",3), 5);
   }
 }
