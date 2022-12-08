@@ -33,15 +33,15 @@ public class ElfForest extends Matrix {
   }
 
   public boolean isTreeVisibleOnLine(int index, int[] array) {
-    int value = array[index];
-    if (isHighestTree(value, Arrays.copyOfRange(array, 0, index)) ||
-        isHighestTree(value, Arrays.copyOfRange(array, index + 1, array.length)))
+    int current = array[index];
+    if (isHighestTree(current, Arrays.copyOfRange(array, 0, index)) ||
+        isHighestTree(current, Arrays.copyOfRange(array, index + 1, array.length)))
       return true;
     return false;
   }
 
-  public boolean isHighestTree(int target, int[] input) {
-    return Arrays.stream(input).allMatch(e -> e < target);
+  public boolean isHighestTree(int current, int[] trees) {
+    return Arrays.stream(trees).allMatch(tree -> tree < current);
   }
 
   public int solvePart2() {
