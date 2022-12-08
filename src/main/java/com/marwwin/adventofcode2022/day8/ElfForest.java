@@ -25,7 +25,6 @@ public class ElfForest extends Matrix {
   public boolean isTreeVisible(int columnIndex, int rowIndex) {
     if (isEdge(columnIndex, rowIndex))
       return true;
-
     if (isTreeVisibleOnLine(rowIndex, getColumn(columnIndex)) ||
         isTreeVisibleOnLine(columnIndex, getRow(rowIndex)))
       return true;
@@ -65,24 +64,24 @@ public class ElfForest extends Matrix {
     return result;
   }
 
-  public int lookUpOrLeft(int rowIndex, int[] column) {
+  public int lookUpOrLeft(int currentIndex, int[] line) {
     int count = 0;
-    int value = column[rowIndex];
-    for (int i = rowIndex - 1; i >= 0; i--) {
+    int value = line[currentIndex];
+    for (int i = currentIndex - 1; i >= 0; i--) {
       count++;
-      if (column[i] >= value) {
+      if (line[i] >= value) {
         break;
       }
     }
     return count;
   }
 
-  public int lookDownOrRight(int columnIndex, int[] row) {
+  public int lookDownOrRight(int currentIndex, int[] line) {
     int count = 0;
-    int value = row[columnIndex];
-    for (int i = columnIndex + 1; i < row.length; i++) {
+    int value = line[currentIndex];
+    for (int i = currentIndex + 1; i < line.length; i++) {
       count++;
-      if (row[i] >= value) {
+      if (line[i] >= value) {
         break;
       }
     }
