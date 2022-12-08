@@ -2,9 +2,11 @@ package com.marwwin.adventofcode2022.day7;
 
 import java.util.HashMap;
 
+import com.marwwin.aoc.Stack;
+
 public class FileSystem {
   Folder root;
-  Stack stack = new Stack();
+  Stack<Folder> stack = new Stack<Folder>();
 
   public FileSystem() {
     root = new Folder("/");

@@ -3,7 +3,9 @@ package com.marwwin.adventofcode2022;
 import org.junit.Test;
 
 import com.marwwin.aoc.AoC;
+import com.marwwin.aoc.Matrix;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
 import java.util.Arrays;
@@ -25,21 +27,50 @@ public class UtilsTest {
   }
 
   @Test
-  public void shouldSplitString(){
+  public void shouldSplitString() {
     String[] result = AoC.splitStringInTwo("123456");
     assertEquals(result[0], "123");
     assertEquals(result[1], "456");
   }
+
   @Test
-  public void shouldSplitOddLengthString(){
+  public void shouldSplitOddLengthString() {
     String[] result = AoC.splitStringInTwo("1234567");
     assertEquals(result[0], "123");
     assertEquals(result[1], "4567");
   }
+
   @Test
-  public void shouldTestAllChars(){
+  public void shouldTestAllChars() {
     String[] result = AoC.splitStringInTwo("1234567");
     assertEquals(result[0], "123");
     assertEquals(result[1], "4567");
   }
+
+  @Test
+  public void shouldReturnCorrectDimesionForMatrix() {
+    Matrix result = AoC.getInputAsMatrix("day8", true);
+    assertEquals(result.width(), 5);
+    assertEquals(result.height(), 5);
+  }
+
+  @Test
+  public void shouldPopulateMatrix() {
+    Matrix result = AoC.getInputAsMatrix("day8", true);
+    assertEquals(result.valueAt(0, 0), 3);
+    assertEquals(result.valueAt(0, 1), 0);
+    assertEquals(result.valueAt(1, 0), 2);
+  }
+
+  @Test
+  public void shouldReturnColumnInMatrix() {
+    Matrix result = AoC.getInputAsMatrix("day8", true);
+    assertArrayEquals(result.getColumn(0), new int[] { 3, 2, 6, 3, 3 });
+  }
+  @Test
+  public void shouldReturnRowInMatrix() {
+    Matrix result = AoC.getInputAsMatrix("day8", true);
+    assertArrayEquals(result.getRow(0), new int[] { 3, 0, 3, 7, 3 });
+  }
+  
 }

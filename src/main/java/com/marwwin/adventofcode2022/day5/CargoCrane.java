@@ -1,9 +1,12 @@
 package com.marwwin.adventofcode2022.day5;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import com.marwwin.aoc.Stack;
+
 public class CargoCrane {
-  Stack[] stacks;
+  List<Stack<Character>> stacks = new ArrayList<>();
 
   public CargoCrane(List<String> input) {
     initializeStacks(input);
@@ -15,18 +18,17 @@ public class CargoCrane {
     int numberOfStacks = input.size() > 0
         ? (lengthOfOneRow + 1) / 4
         : 0;
-    stacks = new Stack[numberOfStacks];
     for (int i = 0; i < numberOfStacks; i++) {
-      stacks[i] = new Stack();
+      stacks.add(new Stack<Character>());
     }
   }
 
   private void populateStacks(List<String> input) {
     if (this.isEmpty())
       return;
-  
+
     // We need to populate the stacks from the bottom up to get the order right
-    // Input.size() - 2 since we don't want the last 2 lines of the input 
+    // Input.size() - 2 since we don't want the last 2 lines of the input
     // Since they contain an empty line and the number of the stacks
     for (int i = input.size() - 2; i >= 0; i--) {
       populateStackFromRow(input.get(i));
@@ -36,7 +38,7 @@ public class CargoCrane {
   public void populateStackFromRow(String string) {
     for (int i = 1; i < string.length(); i += 4) {
       if (string.charAt(i) != ' ')
-        stacks[stackIndex(i)].push(string.charAt(i));
+        stacks.get(stackIndex(i)).push(string.charAt(i));
     }
   }
 
@@ -46,7 +48,7 @@ public class CargoCrane {
 
   public String getTopItems() {
     String result = "";
-    for (Stack s : stacks) {
+    for (Stack<Character> s : stacks) {
       result += s.peek();
     }
     return result;
@@ -57,8 +59,8 @@ public class CargoCrane {
       return;
     Move move = new Move(string);
     for (int i = 0; i < move.amount(); i++) {
-      char itemToMove = stacks[move.from()].pop();
-      stacks[move.to()].push(itemToMove);
+      char itemToMove = stacks.get(move.from()).pop();
+      stacks.get(move.to()).push(itemToMove);
     }
   }
 
@@ -68,10 +70,10 @@ public class CargoCrane {
     Move move = new Move(string);
     char[] itemsToMove = new char[move.amount()];
     for (int i = 0; i < move.amount(); i++) {
-      itemsToMove[i] = stacks[move.from()].pop();
+      itemsToMove[i] = stacks.get(move.to()).pop();
     }
     for (int i = itemsToMove.length - 1; i >= 0; i--) {
-      stacks[move.to()].push(itemsToMove[i]);
+      stacks.get(move.to()).push(itemsToMove[i]);
     }
   }
 
@@ -80,6 +82,6 @@ public class CargoCrane {
   }
 
   public int amountOfStacks() {
-    return stacks.length;
+    return stacks.size();
   }
 }

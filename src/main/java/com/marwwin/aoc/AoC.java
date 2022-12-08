@@ -56,4 +56,8 @@ public class AoC {
     return string.chars()
         .mapToObj(e -> (char) e).collect(Collectors.toSet());
   }
+
+  public static Matrix getInputAsMatrix(String day, boolean test) {
+    return new Matrix(getInputAsString(day, test));
+  }
 }

@@ -6,34 +6,37 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+import com.marwwin.aoc.Stack;
+
 public class StackTest {
   @Test
   public void shouldCreateAStack() {
-    Stack stack = new Stack();
+    Stack<Character> stack = new Stack<Character>();
     assertTrue(stack.isEmpty());
   }
 
   @Test
   public void shouldAddElementToStack() {
-    Stack stack = new Stack();
+    Stack<Character> stack = new Stack<Character>();
     stack.push('A');
     assertFalse(stack.isEmpty());
   }
 
   @Test
   public void shouldReturnTopElement() {
-    Stack stack = new Stack();
+    Stack<Character> stack = new Stack<Character>();
     stack.push('A');
     stack.push('B');
-    assertEquals(stack.peek(), 'B');
+    assertEquals((char) stack.peek(), 'B');
   }
+
   @Test
   public void shouldRemoveTopElement() {
-    Stack stack = new Stack();
+    Stack<Character> stack = new Stack<Character>();
     stack.push('A');
     stack.push('B');
-    assertEquals(stack.pop(), 'B');
-    assertEquals(stack.peek(), 'A');
+    assertEquals((char) stack.pop(), 'B');
+    assertEquals((char) stack.peek(), 'A');
 
   }
 }

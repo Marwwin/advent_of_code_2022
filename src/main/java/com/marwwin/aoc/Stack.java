@@ -1,24 +1,24 @@
-package com.marwwin.adventofcode2022.day7;
+package com.marwwin.aoc;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Stack {
-  List<Folder> stack;
+public class Stack<T> {
+  List<T> stack;
 
   public Stack() {
     stack = new ArrayList<>();
   }
 
-  public void push(Folder folder) {
-    stack.add(folder);
+  public void push(T value) {
+    stack.add(value);
   }
 
-  public Folder pop() {
+  public T pop() {
     return stack.remove(stack.size() - 1);
   }
 
-  public Folder peek() {
+  public T peek() {
     return this.isEmpty()
         ? null
         : stack.get(stack.size() - 1);
