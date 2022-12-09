@@ -1,7 +1,5 @@
 package com.marwwin.adventofcode2022.day8;
 
-import java.util.Arrays;
-
 import com.marwwin.aoc.AoC;
 import com.marwwin.aoc.Day;
 

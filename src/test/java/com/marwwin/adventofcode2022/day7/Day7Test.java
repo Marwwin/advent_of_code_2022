@@ -4,8 +4,6 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import com.marwwin.aoc.Day;
-
 public class Day7Test {
   @Test
   public void shouldSolveTestDataPart1(){

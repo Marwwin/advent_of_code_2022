@@ -34,8 +34,9 @@ public class Day5 extends Day {
 
   @Override
   public String part2() {
-    CargoCrane crane = new CargoCrane(initialState);
-    moves.forEach(crane::moveAll);
-    return crane.getTopItems();
+    //CargoCrane crane = new CargoCrane(initialState);
+    //moves.forEach(crane::moveAll);
+    //return crane.getTopItems();
+    return "";
   }
 }

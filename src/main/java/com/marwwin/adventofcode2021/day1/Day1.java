@@ -1,8 +1,6 @@
 package com.marwwin.adventofcode2021.day1;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.function.IntPredicate;
 
 import com.marwwin.aoc.AoC;
 import com.marwwin.aoc.Day;
@@ -48,7 +46,6 @@ public class Day1 extends Day {
 
   @Override
   public Object part2() {
-    // TODO Auto-generated method stub
     return null;
   }
 

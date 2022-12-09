@@ -1,42 +1,103 @@
 package com.marwwin.adventofcode2022.day9;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 public class Knot {
 
-  // x = 0
-  // y = 1
+  // x = 0, y = 1
   List<Integer> position = new ArrayList<Integer>();
   Set<List<Integer>> visited = new HashSet<>();
-  List<Integer> previous = new ArrayList<Integer>();
+  Knot tail;
 
   public Knot() {
-    position.add(0);
-    position.add(0);
+    setPosition(Arrays.asList(0, 0));
     savePosition();
   }
 
-  public List<Integer> position() {
-    return position;
+  public Knot(int numberOfTails) {
+    setPosition(Arrays.asList(0, 0));
+    savePosition();
+    if (numberOfTails > 0) {
+      tail = new Knot(numberOfTails - 1);
+    }
   }
 
-  public int x() {
+  public void move(String string) {
+    KnotMove move = new KnotMove(string);
+    while (move.nextStep()) {
+      moveKnot(move.getDirection());
+      savePosition();
+      if (distanceToTail() >= 2)
+        tail.move(createTailMove());
+    }
+  }
+
+  private void moveKnot(KnotMoves direction) {
+    if (direction == KnotMoves.RIGHT)
+      right();
+    if (direction == KnotMoves.LEFT)
+      left();
+    if (direction == KnotMoves.UP)
+      up();
+    if (direction == KnotMoves.DOWN)
+      down();
+    if (direction == KnotMoves.UPRIGHT)
+      upRight();
+    if (direction == KnotMoves.UPLEFT)
+      upLeft();
+    if (direction == KnotMoves.DOWNRIGHT)
+      downRight();
+    if (direction == KnotMoves.DOWNLEFT)
+      downLeft();
+  }
+
+  private String createTailMove() {
+    String result = "";
+    if (getY() > tail.getY())
+      result += "U";
+    if (getY() < tail.getY())
+      result += "D";
+    if (getX() > tail.getX())
+      result += "R";
+    if (getX() < tail.getX())
+      result += "L";
+    return result += " 1";
+  }
+
+  public int distanceToTail() {
+    if (tail == null)
+      return 0;
+    return Math.max(
+        Math.abs(tail.getX() - getX()),
+        Math.abs(tail.getY() - getY()));
+  }
+
+  public int getX() {
     return position.get(0);
   }
 
-  public void setX(int n) {
-    position.set(0, n);
-  }
-
-  public int y() {
+  public int getY() {
     return position.get(1);
   }
 
-  public void setY(int n) {
-    position.set(1, n);
+  public Knot getTail() {
+    return tail;
+  }
+
+  public void savePosition() {
+    visited.add(new ArrayList<Integer>(position));
+  }
+
+  public int visited() {
+    return visited.size();
+  }
+
+  public void setPosition(List<Integer> position) {
+    this.position = position;
   }
 
   public void up() {
@@ -75,29 +136,9 @@ public class Knot {
     left();
   }
 
-  public void savePosition() {
-    visited.add(position);
-  }
-
-  public Integer visited() {
-    return visited.size();
-  }
-
   @Override
   public String toString() {
     return "Knot " + position + " ";
-  }
-
-  public void savePrevious() {
-    previous = new ArrayList<>(position);
-  }
-
-  public List<Integer> getPrevious() {
-    return previous;
-  }
-
-  public void setKnot(List<Integer> position) {
-    this.position = position;
   }
 
 }

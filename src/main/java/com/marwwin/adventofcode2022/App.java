@@ -10,6 +10,7 @@ import com.marwwin.adventofcode2022.day5.Day5;
 import com.marwwin.adventofcode2022.day6.Day6;
 import com.marwwin.adventofcode2022.day7.Day7;
 import com.marwwin.adventofcode2022.day8.Day8;
+import com.marwwin.adventofcode2022.day9.Day9;
 
 public class App {
         public static void main(String[] args) throws IOException {
@@ -40,6 +41,9 @@ public class App {
 
                 Day8 day8 = new Day8(false);
                 day8.printResults();
+
+                Day9 day9 = new Day9(false);
+                day9.printResults();
 
                 long endTime = System.nanoTime();
                 System.out.println("All solutions took " + (endTime - startTime) / 1000 + " μs");

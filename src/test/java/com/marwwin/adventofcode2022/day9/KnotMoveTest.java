@@ -1,6 +1,9 @@
 package com.marwwin.adventofcode2022.day9;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
+
 
 import org.junit.Test;
 
@@ -10,38 +13,66 @@ public class KnotMoveTest {
   public void shouldCreateRightMove() {
     KnotMove move = new KnotMove("R 4");
     assertEquals(move.getDirection(), KnotMoves.RIGHT);
-    assertEquals(move.getSteps(), 4);
-
+    assertEquals(move.getStepsRemaining(), 4);
   }
 
   @Test
   public void shouldCreateLeftMove() {
     KnotMove move = new KnotMove("L 3");
     assertEquals(move.getDirection(), KnotMoves.LEFT);
-    assertEquals(move.getSteps(), 3);
+    assertEquals(move.getStepsRemaining(), 3);
   }
 
   @Test
   public void shouldCreateUpMove() {
     KnotMove move = new KnotMove("U 2");
     assertEquals(move.getDirection(), KnotMoves.UP);
-    assertEquals(move.getSteps(), 2);
+    assertEquals(move.getStepsRemaining(), 2);
   }
 
   @Test
   public void shouldCreateDownMove() {
     KnotMove move = new KnotMove("D 1");
     assertEquals(move.getDirection(), KnotMoves.DOWN);
-    assertEquals(move.getSteps(), 1);
+    assertEquals(move.getStepsRemaining(), 1);
   }
 
   @Test
-  public void testStep() {
+  public void shouldCreateUpRightMove() {
+    KnotMove move = new KnotMove("UR 42");
+    assertEquals(move.getDirection(), KnotMoves.UPRIGHT);
+    assertEquals(move.getStepsRemaining(), 42);
+  }
+
+  @Test
+  public void shouldCreateUpLeftMove() {
+    KnotMove move = new KnotMove("UL 5");
+    assertEquals(move.getDirection(), KnotMoves.UPLEFT);
+    assertEquals(move.getStepsRemaining(), 5);
+  }
+
+  @Test
+  public void shouldCreateDownLeftMove() {
+    KnotMove move = new KnotMove("DL 7");
+    assertEquals(move.getDirection(), KnotMoves.DOWNLEFT);
+    assertEquals(move.getStepsRemaining(), 7);
+  }
+
+  @Test
+  public void shouldCreateDownRightMove() {
+    KnotMove move = new KnotMove("DR 1");
+    assertEquals(move.getDirection(), KnotMoves.DOWNRIGHT);
+    assertEquals(move.getStepsRemaining(), 1);
+  }
+
+  @Test
+  public void shouldDecreseStepCountOnNextStep() {
     KnotMove move = new KnotMove("U 2");
-    assertEquals(move.getSteps(), 2);
-    move.step();
-    assertEquals(move.getSteps(), 1);
-    move.step();
-    assertEquals(move.getSteps(), 0);
+    assertEquals(move.getStepsRemaining(), 2);
+    assertTrue(move.nextStep());
+    assertEquals(move.getStepsRemaining(), 1);
+    assertTrue(move.nextStep());
+    assertEquals(move.getStepsRemaining(), 0);
+    assertFalse(move.nextStep());
   }
 }
