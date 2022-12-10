@@ -18,7 +18,7 @@ public class Stack<T> {
     return stack.remove(stack.size() - 1);
   }
 
-  public T peek() {
+  public T top() {
     return this.isEmpty()
         ? null
         : stack.get(stack.size() - 1);

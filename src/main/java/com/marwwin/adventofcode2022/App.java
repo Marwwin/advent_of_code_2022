@@ -2,7 +2,9 @@ package com.marwwin.adventofcode2022;
 
 import java.io.IOException;
 
+import com.marwwin.adventofcode2022.aoc.GameOfLife;
 import com.marwwin.adventofcode2022.day1.Day1;
+import com.marwwin.adventofcode2022.day10.Day10;
 import com.marwwin.adventofcode2022.day2.Day2;
 import com.marwwin.adventofcode2022.day3.Day3;
 import com.marwwin.adventofcode2022.day4.Day4;
@@ -45,9 +47,25 @@ public class App {
                 Day9 day9 = new Day9(false);
                 day9.printResults();
 
+                Day10 day10 = new Day10(false);
+                day10.part1();
+                System.out.println();
+                System.out.println();
+
                 long endTime = System.nanoTime();
                 System.out.println("All solutions took " + (endTime - startTime) / 1000 + " μs");
 
+                // GameOfLife game = new GameOfLife();
+                // game.setCell(0+"x"+0, true);
+                // game.setCell(1+"x"+0, true);
+                // game.setCell(0+"x"+1, true);
+                //
+                // try {
+                // game.play();
+                // } catch (InterruptedException e) {
+                // // TODO Auto-generated catch block
+                // e.printStackTrace();
+                // }
         }
 
         private static void showHeader() {

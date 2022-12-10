@@ -27,7 +27,7 @@ public class StackTest {
     Stack<Character> stack = new Stack<Character>();
     stack.push('A');
     stack.push('B');
-    assertEquals((char) stack.peek(), 'B');
+    assertEquals((char) stack.top(), 'B');
   }
 
   @Test
@@ -36,7 +36,7 @@ public class StackTest {
     stack.push('A');
     stack.push('B');
     assertEquals((char) stack.pop(), 'B');
-    assertEquals((char) stack.peek(), 'A');
+    assertEquals((char) stack.top(), 'A');
 
   }
 }

@@ -1,37 +1,38 @@
 package com.marwwin.adventofcode2022.day9;
 
+import com.marwwin.aoc.Directions;
+
 public class KnotMove {
-  private KnotMoves direction;
+  private Directions direction;
   private int steps;
 
   public KnotMove(String string) {
     String[] move = string.split(" ");
-    direction = parseDirection(move);
+    direction = parseDirection(move[0]);
     steps = Integer.parseInt(move[1]);
   }
 
-  private KnotMoves parseDirection(String[] move) {
-    String direction = move[0];
+  private Directions parseDirection(String direction) {
     if (direction.equals("U"))
-      return KnotMoves.UP;
+      return Directions.UP;
     if (direction.equals("D"))
-      return KnotMoves.DOWN;
+      return Directions.DOWN;
     if (direction.equals("R"))
-      return KnotMoves.RIGHT;
+      return Directions.RIGHT;
     if (direction.equals("L"))
-      return KnotMoves.LEFT;
+      return Directions.LEFT;
     if (direction.equals("UR"))
-      return KnotMoves.UPRIGHT;
+      return Directions.UPRIGHT;
     if (direction.equals("UL"))
-      return KnotMoves.UPLEFT;
+      return Directions.UPLEFT;
     if (direction.equals("DR"))
-      return KnotMoves.DOWNRIGHT;
+      return Directions.DOWNRIGHT;
     if (direction.equals("DL"))
-      return KnotMoves.DOWNLEFT;
+      return Directions.DOWNLEFT;
     return null;
   }
 
-  public KnotMoves getDirection() {
+  public Directions getDirection() {
     return direction;
   }
 

@@ -1,6 +1,6 @@
-package com.marwwin.adventofcode2022.day9;
+package com.marwwin.aoc;
 
-public enum KnotMoves {
+public enum Directions {
   UP,
   DOWN,
   RIGHT,

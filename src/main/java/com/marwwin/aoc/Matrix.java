@@ -5,6 +5,10 @@ import java.util.List;
 public class Matrix {
   int[][] matrix;
 
+  public Matrix(int width, int length) {
+    matrix = new int[width][length];
+  }
+
   public Matrix(List<String> input) {
     int height = input.size();
     int width = input.get(0).length();

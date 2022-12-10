@@ -6,6 +6,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import com.marwwin.aoc.Directions;
+
 public class Knot {
 
   // x = 0, y = 1
@@ -36,22 +38,22 @@ public class Knot {
     }
   }
 
-  private void moveKnot(KnotMoves direction) {
-    if (direction == KnotMoves.RIGHT)
+  private void moveKnot(Directions direction) {
+    if (direction == Directions.RIGHT)
       right();
-    if (direction == KnotMoves.LEFT)
+    if (direction == Directions.LEFT)
       left();
-    if (direction == KnotMoves.UP)
+    if (direction == Directions.UP)
       up();
-    if (direction == KnotMoves.DOWN)
+    if (direction == Directions.DOWN)
       down();
-    if (direction == KnotMoves.UPRIGHT)
+    if (direction == Directions.UPRIGHT)
       upRight();
-    if (direction == KnotMoves.UPLEFT)
+    if (direction == Directions.UPLEFT)
       upLeft();
-    if (direction == KnotMoves.DOWNRIGHT)
+    if (direction == Directions.DOWNRIGHT)
       downRight();
-    if (direction == KnotMoves.DOWNLEFT)
+    if (direction == Directions.DOWNLEFT)
       downLeft();
   }
 

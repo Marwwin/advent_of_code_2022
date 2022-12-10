@@ -37,7 +37,7 @@ public class FileSystem {
   }
 
   public Folder current() {
-    return stack.peek();
+    return stack.top();
   }
 
   public Folder root() {
