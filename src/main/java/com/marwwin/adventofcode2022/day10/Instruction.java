@@ -1,10 +1,10 @@
 package com.marwwin.adventofcode2022.day10;
 
-public class Command {
-  Integer value;
+public class Instruction {
+  int value;
   int cycles;
 
-  public Command(String string) {
+  public Instruction(String string) {
     String[] instruction = string.split(" ");
 
     if (instruction[0].equals("noop")) {
@@ -19,7 +19,7 @@ public class Command {
     }
   }
 
-  public Integer getValue() {
+  public int getValue() {
     return value;
   }
 

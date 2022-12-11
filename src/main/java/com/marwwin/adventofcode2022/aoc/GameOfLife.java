@@ -1,7 +1,10 @@
 package com.marwwin.adventofcode2022.aoc;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class GameOfLife {
@@ -13,31 +16,83 @@ public class GameOfLife {
     emptyNeighbours = new HashSet<String>();
   }
 
-  public void play() throws InterruptedException {
-    evolve();
+  public void play() throws InterruptedException, IOException {
+    Runtime.getRuntime().exec("clear");
     print();
-    Thread.sleep(100000);
+    evolve();
+    Thread.sleep(500);
     play();
   }
 
-  private void evolve() {
+  public void print() {
+    int maxX = 0;
+    int maxY = 0;
+
     for (String cell : matrix.keySet()) {
-      if(!matrix.get(cell))
-        return;
+      int x = Math.abs(getX(cell));
+      if (x > maxX)
+        maxX = x;
+      int y = Math.abs(getY(cell));
+      if (y > maxY)
+        maxY = y;
+    }
+
+    int columns = 10;
+    int rows = 20;
+
+    for (int y = columns; y >= -columns; y--) {
+      for (int x = -rows; x < rows; x++) {
+        if (y == -columns || y == columns) {
+          System.out.print("-");
+          continue;
+        }
+        if (x == -rows || x == rows - 1) {
+          System.out.print("|");
+          continue;
+        }
+        if (matrix.get(x + "x" + y) != null && matrix.get(x + "x" + y)) {
+          System.out.print("x");
+          continue;
+        }
+        System.out.print(" ");
+
+      }
+      System.out.println();
+    }
+  }
+
+  private void evolve() {
+    Object[] cells = matrix.keySet().toArray();
+
+    List<String> toRemove = new ArrayList<String>();
+
+    for (int i = 0; i < cells.length; i++) {
+      String cell = (String) cells[i];
+      if (!matrix.get(cell))
+        continue;
 
       int neighbours = amountOfNeighbours(new Cell(cell));
       if (neighbours < 2)
-        setCell(cell, false);
+        toRemove.add(cell);
       if (neighbours > 3)
-        setCell(cell, false);
+        toRemove.add(cell);
     }
 
-    for (String cell : emptyNeighbours) {
+    Object[] emptyCells = emptyNeighbours.toArray();
+    List<String> toAdd = new ArrayList<String>();
+
+    for (int i = 0; i < emptyCells.length; i++) {
+      String cell = (String) emptyCells[i];
+
       int neighbours = amountOfNeighbours(new Cell(cell));
+
       if (neighbours == 3) {
-        setCell(cell, true);
+        toAdd.add(cell);
       }
     }
+    toRemove.forEach(cell -> setCell(cell, false));
+    toAdd.forEach(cell -> setCell(cell, true));
+
     emptyNeighbours = new HashSet<>();
   }
 
@@ -67,7 +122,7 @@ public class GameOfLife {
   }
 
   private String rightOf(Cell cell) {
-    return (cell.getX() + 1 ) + "x" + cell.getY();
+    return (cell.getX() + 1) + "x" + cell.getY();
   }
 
   private String leftOf(Cell cell) {
@@ -75,7 +130,7 @@ public class GameOfLife {
   }
 
   private String above(Cell cell) {
-    return cell.getX() + "x" + cell.getY() + 1;
+    return cell.getX() + "x" + (cell.getY() + 1);
   }
 
   private String below(Cell cell) {
@@ -87,7 +142,8 @@ public class GameOfLife {
   }
 
   public Boolean getCell(String cell) {
-    return matrix.get(cell) != null;
+    Boolean s = matrix.get(cell);
+    return s != null && s;
   }
 
   public Boolean setCell(Cell cell, boolean value) {
@@ -104,40 +160,5 @@ public class GameOfLife {
 
   public int getY(String cell) {
     return Integer.parseInt(cell.split("x")[1]);
-  }
-
-  public void print() {
-    int maxX = 0;
-    int maxY = 0;
-
-    Set<String> keys = matrix.keySet();
-    for (String cell : matrix.keySet()) {
-      int x = Math.abs(getX(cell));
-      if (x > maxX)
-        maxX = x;
-      int y = Math.abs(getY(cell));
-      if (y > maxY)
-        maxY = y;
-    }
-
-    for (int y = -20; y < 20; y++) {
-      for (int x = -20; x < 20; x++) {
-        if (y == -20 || y == 19) {
-          System.out.print("-");
-          continue;
-        }
-        if (x == -20 || x == 19) {
-          System.out.print("|");
-          continue;
-        }
-        if (keys.contains(x + "-" + y)) {
-          System.out.print("x");
-          continue;
-        }
-        System.out.print(" ");
-
-      }
-      System.out.println();
-    }
   }
 }

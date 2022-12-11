@@ -55,17 +55,18 @@ public class App {
                 long endTime = System.nanoTime();
                 System.out.println("All solutions took " + (endTime - startTime) / 1000 + " μs");
 
-                // GameOfLife game = new GameOfLife();
-                // game.setCell(0+"x"+0, true);
-                // game.setCell(1+"x"+0, true);
-                // game.setCell(0+"x"+1, true);
-                //
-                // try {
-                // game.play();
-                // } catch (InterruptedException e) {
-                // // TODO Auto-generated catch block
-                // e.printStackTrace();
-                // }
+                GameOfLife game = new GameOfLife();
+                game.setCell(0 + "x" + 5, true);
+
+
+                
+
+                try {
+                        game.play();
+                } catch (InterruptedException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                }
         }
 
         private static void showHeader() {

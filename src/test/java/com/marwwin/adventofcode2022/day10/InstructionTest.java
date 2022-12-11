@@ -5,24 +5,24 @@ import static org.junit.Assert.assertFalse;
 
 import org.junit.Test;
 
-public class CommandTest {
+public class InstructionTest {
   @Test
   public void shouldCreateNoopCommand() {
-    Command noop = new Command("noop");
+    Instruction noop = new Instruction("noop");
     assertEquals(noop.getCycles(), 1);
-    assertEquals(noop.getValue(), null);
+    assertEquals(noop.getValue(), 0);
   }
 
   @Test
   public void shouldCreateAddXCommand() {
-    Command noop = new Command("addx 2");
-    assertEquals(noop.getCycles(), 2);
-    assertEquals((int) noop.getValue(), 2);
+    Instruction addx = new Instruction("addx 2");
+    assertEquals(addx.getCycles(), 2);
+    assertEquals(addx.getValue(), 2);
   }
 
   @Test
-  public void cycleShodDecrementCycles() {
-    Command noop = new Command("noop");
+  public void cycleShouldDecrementCycles() {
+    Instruction noop = new Instruction("noop");
     assertEquals(noop.getCycles(), 1);
     noop.cycle();
     assertEquals(noop.getCycles(), 0);
