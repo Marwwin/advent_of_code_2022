@@ -7,7 +7,7 @@ import java.util.List;
 
 import org.junit.Test;
 
-public class CargoCraneTest {
+public class CrateMover9001Test {
   @Test
   public void shouldCreateACargoCrateWithNStacks() {
     List<String> input = new ArrayList<>();
@@ -15,15 +15,15 @@ public class CargoCraneTest {
     input.add("[N] [C]    ");
     input.add("[Z] [M] [P]");
     input.add(" 1   2   3 ");
-    CargoCrane crane = new CargoCrane(input);
+    CrateMover9001 crane = new CrateMover9001(input);
     assertEquals(3, crane.amountOfStacks());
   }
   @Test
   public void shouldaddInputStacks(){
     List<String> input = new ArrayList<>();
     input.add(" 1   2   3 ");
-    CargoCrane crane = new CargoCrane(input);
-    crane.populateStackFromRow("[Z] [M] [P]");
+    CrateMover9001 crane = new CrateMover9001(input);
+    crane.fill("[Z] [M] [P]");
     assertEquals(crane.getTopItems(), "ZMP");
   }
   @Test
@@ -33,7 +33,7 @@ public class CargoCraneTest {
     input.add("[N] [C]    ");
     input.add("[Z] [M] [P]");
     input.add(" 1   2   3 ");
-    CargoCrane crane = new CargoCrane(input);
+    CrateMover9001 crane = new CrateMover9001(input);
     assertEquals(3, crane.amountOfStacks());
     assertEquals(crane.getTopItems(), "NDP");
   }
@@ -44,7 +44,7 @@ public class CargoCraneTest {
     input.add("[N] [C]    ");
     input.add("[Z] [M] [P]");
     input.add(" 1   2   3 ");
-    CargoCrane crane = new CargoCrane(input);
+    CrateMover9001 crane = new CrateMover9001(input);
     crane.move("move 1 from 2 to 1");
     assertEquals(crane.getTopItems(), "DCP");
   }

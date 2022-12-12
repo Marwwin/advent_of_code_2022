@@ -4,10 +4,10 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-public class MoveTest {
+public class CrateMoverTaskTest {
   @Test
   public void shouldCreateAMove() {
-    Move move = new Move("move 3 from 2 to 1");    
+    CrateMoverTask move = new CrateMoverTask("move 3 from 2 to 1");    
     assertEquals(move.amount(), 3);
     assertEquals(move.from(), 2 - 1);
     assertEquals(move.to(), 1 - 1);

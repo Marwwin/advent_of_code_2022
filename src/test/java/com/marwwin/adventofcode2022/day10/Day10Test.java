@@ -20,11 +20,11 @@ public class Day10Test {
   @Test
   public void testPart2() {
     Day10 day10 = new Day10(true);
-    assertEquals(day10.part2(), 10);
+    assertEquals(day10.part2(), 13140);
   }
   @Test
   public void testPart2RealData() {
     Day10 day10 = new Day10(false);
-    assertEquals(day10.part2(), 10);
+    assertEquals(day10.part2(), 17180);
   }
 }

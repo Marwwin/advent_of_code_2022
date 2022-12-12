@@ -27,16 +27,15 @@ public class Day5 extends Day {
 
   @Override
   public String part1() {
-    CargoCrane crane = new CargoCrane(initialState);
+    CrateMover9001 crane = new CrateMover9001(initialState);
     moves.forEach(crane::move);
     return crane.getTopItems();
   }
 
   @Override
   public String part2() {
-    //CargoCrane crane = new CargoCrane(initialState);
-    //moves.forEach(crane::moveAll);
-    //return crane.getTopItems();
-    return "";
+    CrateMover9001 crane = new CrateMover9001(initialState);
+    moves.forEach(crane::moveAll);
+    return crane.getTopItems();
   }
 }

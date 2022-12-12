@@ -2,12 +2,12 @@ package com.marwwin.adventofcode2022.day5;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Move {
+public class CrateMoverTask {
   private int amount;
   private int from;
   private int to;
 
-  public Move(String string) {
+  public CrateMoverTask(String string) {
     Pattern pattern = Pattern.compile("\\d+");
     Matcher match = pattern.matcher(string);
     match.find();
