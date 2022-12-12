@@ -5,8 +5,8 @@ import java.util.List;
 public class Matrix {
   int[][] matrix;
 
-  public Matrix(int width, int length) {
-    matrix = new int[width][length];
+  public Matrix(int width, int height) {
+    matrix = new int[height][width];
   }
 
   public Matrix(List<String> input) {
@@ -33,11 +33,11 @@ public class Matrix {
     return matrix;
   }
 
-  public int width() {
+  public int height() {
     return matrix.length;
   }
 
-  public int height() {
+  public int width() {
     return matrix[0].length;
   }
 
@@ -59,5 +59,14 @@ public class Matrix {
     if (columnIndex == height() - 1 || rowIndex == width() - 1)
       return true;
     return false;
+  }
+
+  public void print() {
+    for (int column = 0; column < height(); column++) {
+      for (int row = 0; row < width(); row++) {
+        System.out.print(matrix[column][row] + " ");
+      }
+      System.out.println();
+    }
   }
 }
