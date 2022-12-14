@@ -4,15 +4,22 @@ import com.marwwin.adventofcode2022.aoc.Cell;
 
 public class HillNode extends Cell {
 
-  public Double distance;
-  int value;
-  HillNode left;
-  HillNode right;
-  HillNode down;
-  HillNode up;
-
-  HillNode route;
+  private int value;
+  private HillNode left;
+  private HillNode right;
+  private HillNode down;
+  private HillNode up;
   private HillNode parent;
+
+  public HillNode(int x, int y) {
+    super(x, y);
+  }
+
+  public HillNode(int x, int y, int value) {
+    super(x, y);
+
+    this.value = value;
+  }
 
   public HillNode getParent() {
     return parent;
@@ -26,24 +33,6 @@ public class HillNode extends Cell {
 
   public boolean isExplored() {
     return explored;
-  }
-
-  public HillNode(int x, int y) {
-    super(x, y);
-  }
-
-  public HillNode(int x, int y, int value) {
-    super(x, y);
-
-    this.value = value;
-  }
-
-  public double getDistance() {
-    return distance;
-  }
-
-  public void setDistance(double distance) {
-    this.distance = distance;
   }
 
   public HillNode getLeft() {
