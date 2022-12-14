@@ -3,6 +3,7 @@ package com.marwwin.adventofcode2022.day12;
 import static org.junit.Assert.assertEquals;
 
 import java.util.PriorityQueue;
+import java.util.Queue;
 
 import org.junit.Test;
 
@@ -52,7 +53,7 @@ public class HillTest {
   @Test
   public void priorityQueueShouldExist() {
     Hill hill = new Hill(AoC.getInputAsString("day12", true));
-    PriorityQueue<Integer> queue = hill.getDiscovered();
+    Queue<Integer> queue = hill.getDiscovered();
   }
 
   @Test

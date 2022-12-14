@@ -48,6 +48,7 @@ public class CrateMover9001 {
       if (!ch.equals("[") && !ch.equals("]") && !ch.equals(" ")) {
         crates.add(new Crate(ch, stackIndex));
         stackIndex += 1;
+        
       }
     }
 
