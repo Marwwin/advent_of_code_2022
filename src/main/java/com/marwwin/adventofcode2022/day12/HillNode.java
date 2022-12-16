@@ -1,14 +1,17 @@
 package com.marwwin.adventofcode2022.day12;
 
-import com.marwwin.adventofcode2022.aoc.Cell;
+import java.util.ArrayList;
+import java.util.List;
 
-public class HillNode extends Cell {
+import com.marwwin.adventofcode2022.aoc.Position;
+
+public class HillNode extends Position {
 
   private int value;
-  private HillNode left;
-  private HillNode right;
-  private HillNode down;
-  private HillNode up;
+  private HillNode left = null;
+  private HillNode right = null;
+  private HillNode down = null;
+  private HillNode up = null;
   private HillNode parent;
 
   public HillNode(int x, int y) {
@@ -83,6 +86,24 @@ public class HillNode extends Cell {
   public void clear() {
     explored = false;
     parent = null;
+  }
+
+  public List<HillNode> getNeighbours() {
+    List<HillNode> nodes = new ArrayList<HillNode>();
+
+    if (left != null)
+      nodes.add(left);
+
+    if (right != null)
+      nodes.add(right);
+
+    if (up != null)
+      nodes.add(up);
+
+    if (down != null)
+      nodes.add(down);
+
+    return nodes;
   }
 
 }

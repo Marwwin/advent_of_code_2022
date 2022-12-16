@@ -14,15 +14,15 @@ public class GameOfLifeTest {
   public void shouldReturnAmountOfNeighbours() {
     GameOfLife game = new GameOfLife();
     game.setCell(0 + "x" + 0, true);
-    assertEquals(game.amountOfNeighbours(new Cell("0x0")), 0);
+    assertEquals(game.amountOfNeighbours(new Position("0x0")), 0);
     game.setCell(1 + "x" + 0, true);
-    assertEquals(game.amountOfNeighbours(new Cell("0x0")), 1);
+    assertEquals(game.amountOfNeighbours(new Position("0x0")), 1);
     game.setCell(-1 + "x" + 0, true);
-    assertEquals(game.amountOfNeighbours(new Cell("0x0")), 2);
+    assertEquals(game.amountOfNeighbours(new Position("0x0")), 2);
     game.setCell(0 + "x" + -1, true);
-    assertEquals(game.amountOfNeighbours(new Cell("0x0")), 3);
+    assertEquals(game.amountOfNeighbours(new Position("0x0")), 3);
     game.setCell(0 + "x" + 1, true);
-    assertEquals(game.amountOfNeighbours(new Cell("0x0")), 4);
+    assertEquals(game.amountOfNeighbours(new Position("0x0")), 4);
   }
 
   @Test

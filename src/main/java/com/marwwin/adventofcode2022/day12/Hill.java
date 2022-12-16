@@ -6,95 +6,24 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-public class HillV2BFS {
+public class Hill {
 
   private HashMap<String, HillNode> matrix;
+  private List<HillNode> aNodes = new ArrayList<>();
+  private HillNode start;
   private int height;
   private int width;
-  private HillNode start;
-  private List<HillNode> aNodes = new ArrayList<>();
 
-  public HillV2BFS() {
+  public Hill() {
     matrix = new HashMap<String, HillNode>();
   }
 
-  public HillV2BFS(List<String> list) {
+  public Hill(List<String> list) {
     matrix = new HashMap<String, HillNode>();
     width = list.get(0).length();
     height = list.size();
     buildHill(list);
-    createGraph(0, 0);
-  }
-
-  public HillNode findShortest(HillNode start) {
-    Queue<HillNode> queue = new LinkedList<>();
-    start.setExplored();
-    queue.add(start);
-    while (!queue.isEmpty()) {
-      HillNode node = queue.remove();
-      if (node.getValue() == 75)
-        return node;
-      for (HillNode n : getNeighbours(node)) {
-        if (!n.isExplored()) {
-          n.setExplored();
-          n.setParent(node);
-          queue.add(n);
-        }
-      }
-    }
-    return null;
-  }
-
-  public int getRouteLength(HillNode node) {
-    if (node == null)
-      return Integer.MAX_VALUE;
-    int length = 0;
-    HillNode current = node;
-    while (true) {
-      if (current.getParent() == null || current.getValue() == 'S' - '0') {
-        return length;
-      } else
-        current = current.getParent();
-      length++;
-    }
-  }
-
-  public int findShortestFroma() {
-    int length = Integer.MAX_VALUE;
-    for (HillNode a : aNodes) {
-      int route = getRouteLength(findShortest(a));
-      if (route < length)
-        length = route;
-      clear();
-    }
-    return length;
-  }
-
-  private void createGraph(int x, int y) {
-    HillNode node = getNode(x, y);
-
-    HillNode left = leftOf(node);
-    if (left != null)
-      node.setLeft(left);
-
-    HillNode right = rightOf(node);
-    if (right != null)
-      node.setRight(right);
-
-    HillNode above = above(node);
-    if (above != null)
-      node.setUp(above);
-
-    HillNode below = below(node);
-    if (below != null)
-      node.setDown(below);
-
-    if (x == getWidth() - 1 && y == getHeight() - 1)
-      return;
-    if (x == getWidth() - 1)
-      createGraph(0, y + 1);
-    else
-      createGraph(x + 1, y);
+    createGraph(getNode(0, 0));
   }
 
   private void buildHill(List<String> list) {
@@ -112,27 +41,72 @@ public class HillV2BFS {
     }
   }
 
-  public List<HillNode> getNeighbours(HillNode current) {
-    List<HillNode> nodes = new ArrayList<HillNode>();
-   // HillNode current = getNode(x, y);
+  private void createGraph(HillNode node) {
+    while (node.getX() != getWidth() - 1 && node.getY() != getHeight() - 1) {
+      node = setNeighbours(node);
+      int x = node.getX();
+      int y = node.getY();
+      if (node.getX() == getWidth() - 1)
+        node = getNode(0, y + 1);
+      else
+        node = getNode(x + 1, y);
+    }
+  }
 
-    HillNode left = leftOf(current);
-    if (left != null)
-      nodes.add(left);
+  private HillNode setNeighbours(HillNode node) {
+    node.setLeft(leftOf(node));
+    node.setRight(rightOf(node));
+    node.setUp(above(node));
+    node.setDown(below(node));
+    return node;
+  }
 
-    HillNode right = rightOf(current);
-    if (right != null)
-      nodes.add(right);
+  public HillNode findShortest(HillNode start) {
+    Queue<HillNode> queue = new LinkedList<>();
+    start.setExplored();
+    queue.add(start);
+    return findShortestHelper(queue);
+  }
 
-    HillNode above = above(current);
-    if (above != null)
-      nodes.add(above);
+  private HillNode findShortestHelper(Queue<HillNode> queue) {
+    if (queue.isEmpty())
+      return null;
 
-    HillNode below = below(current);
-    if (below != null)
-      nodes.add(below);
+    HillNode current = queue.remove();
+    if (current.getValue() == 75)
+      return current;
 
-    return nodes;
+    for (HillNode node : current.getNeighbours()) {
+      if (node.isExplored())
+        continue;
+      node.setExplored();
+      node.setParent(current);
+      queue.add(node);
+    }
+    return findShortestHelper(queue);
+  }
+
+  public int getRouteLength(HillNode node) {
+    if (node == null)
+      return Integer.MAX_VALUE;
+    return getRouteLengthHelper(node, 0);
+  }
+
+  private int getRouteLengthHelper(HillNode node, int length) {
+    if (node.getParent() == null)
+      return length;
+    return getRouteLengthHelper(node.getParent(), length += 1);
+  }
+
+  public int findShortestFroma() {
+    int length = Integer.MAX_VALUE;
+    for (HillNode a : aNodes) {
+      int route = getRouteLength(findShortest(a));
+      if (route < length)
+        length = route;
+      clear();
+    }
+    return length;
   }
 
   private HillNode leftOf(HillNode current) {
@@ -159,7 +133,6 @@ public class HillV2BFS {
   private HillNode below(HillNode current) {
     if (current.getY() + 1 >= getHeight())
       return null;
-
     HillNode node = getNode(current.getX(), current.getY() + 1);
     return isNextNodeReachable(current, node);
   }

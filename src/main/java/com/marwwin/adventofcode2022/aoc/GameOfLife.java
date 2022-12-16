@@ -71,7 +71,7 @@ public class GameOfLife {
       if (!matrix.get(cell))
         continue;
 
-      int neighbours = amountOfNeighbours(new Cell(cell));
+      int neighbours = amountOfNeighbours(new Position(cell));
       if (neighbours < 2)
         toRemove.add(cell);
       if (neighbours > 3)
@@ -84,7 +84,7 @@ public class GameOfLife {
     for (int i = 0; i < emptyCells.length; i++) {
       String cell = (String) emptyCells[i];
 
-      int neighbours = amountOfNeighbours(new Cell(cell));
+      int neighbours = amountOfNeighbours(new Position(cell));
 
       if (neighbours == 3) {
         toAdd.add(cell);
@@ -96,7 +96,7 @@ public class GameOfLife {
     emptyNeighbours = new HashSet<>();
   }
 
-  public int amountOfNeighbours(Cell cell) {
+  public int amountOfNeighbours(Position cell) {
     int result = 0;
     if (getCell(leftOf(cell)))
       result++;
@@ -121,23 +121,23 @@ public class GameOfLife {
     return result;
   }
 
-  private String rightOf(Cell cell) {
+  private String rightOf(Position cell) {
     return (cell.getX() + 1) + "x" + cell.getY();
   }
 
-  private String leftOf(Cell cell) {
+  private String leftOf(Position cell) {
     return (cell.getX() - 1) + "x" + cell.getY();
   }
 
-  private String above(Cell cell) {
+  private String above(Position cell) {
     return cell.getX() + "x" + (cell.getY() + 1);
   }
 
-  private String below(Cell cell) {
+  private String below(Position cell) {
     return cell.getX() + "x" + (cell.getY() - 1);
   }
 
-  public Boolean getCell(Cell cell) {
+  public Boolean getCell(Position cell) {
     return getCell(cell.toString());
   }
 
@@ -146,7 +146,7 @@ public class GameOfLife {
     return s != null && s;
   }
 
-  public Boolean setCell(Cell cell, boolean value) {
+  public Boolean setCell(Position cell, boolean value) {
     return matrix.put(cell.toString(), value);
   }
 
