@@ -22,6 +22,5 @@ public class ValveTest {
     assertEquals(valve.getName(), "AA");
     assertEquals(valve.getFlowRate(), 3);
     assertArrayEquals(valve.getChildrenNames(), new String[]{"GG"});
-
   }
 }

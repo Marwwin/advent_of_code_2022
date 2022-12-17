@@ -1,13 +1,16 @@
 package com.marwwin.adventofcode2022.day16;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Valve {
-  int flowRate;
-  int index;
-  String name;
-  List<Valve> children;
-  String[] childrenNames;
+  private int flowRate;
+  private int index;
+  private String name;
+  private List<Valve> children = new ArrayList<>();
+  private List<String> childrenNames = new ArrayList<>();
 
   public Valve(String string) {
     String[] strings = string.split(";");
@@ -16,7 +19,9 @@ public class Valve {
   }
 
   private void parseChildren(String string) {
-    childrenNames = string.substring(24).split(", ");
+    for (String child : string.substring(24).split(", ")) {
+      childrenNames.add(child);
+    }
   }
 
   private void parseNameAndFlowRate(String string) {
@@ -24,7 +29,7 @@ public class Valve {
     flowRate = Integer.parseInt(string.split("=")[1]);
   }
 
-  public String[] getChildrenNames() {
+  public List<String> getChildrenNames() {
     return childrenNames;
   }
 
@@ -50,6 +55,33 @@ public class Valve {
 
   public void setName(String name) {
     this.name = name;
+  }
+
+  public void setChildren(HashMap<String,Valve> valves) {
+      for (String childName : getChildrenNames()) {
+        List<Valve> children = recursivelyGetChild(valves.get(childName));
+        
+        children.forEach(child -> addChild(child));
+
+      }
+
+  }
+
+  private List<Valve> recursivelyGetChild(Valve valve) {
+    List<Valve> children =  new ArrayList<Valve>(); 
+    if (valve.getFlowRate() == 0){
+      return valve.getChildren() recursivelyGetChild();
+    }
+    children.add(valve);
+    return children
+  }
+
+  public void addChild(Valve newValve) {
+    children.add(newValve);
+  }
+
+  public List<Valve> getChildren() {
+    return children;
   }
 
 }
