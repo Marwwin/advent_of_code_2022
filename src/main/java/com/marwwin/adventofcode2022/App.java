@@ -8,6 +8,7 @@ import com.marwwin.adventofcode2022.day10.Day10;
 import com.marwwin.adventofcode2022.day11.Day11;
 import com.marwwin.adventofcode2022.day12.Day12;
 import com.marwwin.adventofcode2022.day14.Day14;
+import com.marwwin.adventofcode2022.day17.Tetris;
 import com.marwwin.adventofcode2022.day2.Day2;
 import com.marwwin.adventofcode2022.day3.Day3;
 import com.marwwin.adventofcode2022.day4.Day4;
@@ -16,6 +17,7 @@ import com.marwwin.adventofcode2022.day6.Day6;
 import com.marwwin.adventofcode2022.day7.Day7;
 import com.marwwin.adventofcode2022.day8.Day8;
 import com.marwwin.adventofcode2022.day9.Day9;
+import com.marwwin.aoc.AoC;
 
 public class App {
         public static void main(String[] args) throws IOException {
@@ -58,13 +60,17 @@ public class App {
 
                 Day12 day12 = new Day12(true);
                 day12.part1();
-
+                
                 long endTime = System.nanoTime();
                 System.out.println("All solutions took " + (endTime - startTime) / 1000 + " μs");
                 System.out.println();
 
                 Day14 day14 = new Day14(true);
                 day14.part1();
+
+                System.out.println();
+                Tetris tetris = new Tetris(7, AoC.getInputAsString("day17", true).get(0));
+                tetris.play(3);
         }
 
         private static void showHeader() {

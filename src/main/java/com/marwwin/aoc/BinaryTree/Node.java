@@ -1,10 +1,10 @@
 package com.marwwin.aoc.BinaryTree;
 
+
 public class Node {
   int value;
   Node right;
   Node left;
-
   public Node() {
   }
 

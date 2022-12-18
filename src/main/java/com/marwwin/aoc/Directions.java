@@ -9,4 +9,6 @@ public enum Directions {
   UPRIGHT,
   DOWNLEFT,
   DOWNRIGHT,
+  FORWARD,
+  BACKWARD
 }

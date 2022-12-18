@@ -73,7 +73,7 @@ public class Valve {
       return valve.getChildren() recursivelyGetChild();
     }
     children.add(valve);
-    return children
+   // return children
   }
 
   public void addChild(Valve newValve) {
