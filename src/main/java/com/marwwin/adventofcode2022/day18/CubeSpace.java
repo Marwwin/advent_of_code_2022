@@ -54,7 +54,7 @@ public class CubeSpace {
           lower.forEach(cubeWithLowerScore -> {
             Directions connected = cube.isConnected(cubeWithLowerScore);
             if (connected != null) {
-              cube.connect(connected);
+              cube.connect(connected, cubeWithLowerScore);
             }
           });
         }
@@ -62,7 +62,7 @@ public class CubeSpace {
           higher.forEach(cubeWithHigherScore -> {
             Directions connected = cube.isConnected(cubeWithHigherScore);
             if (connected != null) {
-              cube.connect(connected);
+              cube.connect(connected, cubeWithHigherScore);
             }
           });
         }
@@ -72,16 +72,32 @@ public class CubeSpace {
 
   public int count() {
     int result = 0;
-    for (int y = yNegativeEdge; y <= yPositiveEdge; y++)
-      for (int z = zNegativeEdge; z <= zPositiveEdge; z++)
+    for (int y = yNegativeEdge; y <= yPositiveEdge; y++) {
+      for (int z = zNegativeEdge; z <= zPositiveEdge; z++) {
         for (int x = xNegativeEdge; x <= xPositiveEdge; x++) {
           Cube cube = cubes.get(new Coord(x, y, z));
-          System.out.println(cube + " " + new Coord(x, y, z));
-          result += cube == null ? 0 : 1;
+          if (cube != null) {
+            cube.setFound();
+            countPerimeter(cube);
+            if (!cube.getFound()) {
+              cube.setFound();
+              result += cube.exposedSides();
+              result -= !cube.isRight() ? 1 : 0;
+              System.out.println("xneg " + cube.isRight());
+            }
+            break;
+          }
         }
-
+      }
+    }
     System.out.println(cubes.size());
     return result;
+  }
+
+  private void countPerimeter(Cube cube) {
+    if (!cube.isAbove() cu)
+      {}
+
   }
 
   public int getTrappedCubes() {

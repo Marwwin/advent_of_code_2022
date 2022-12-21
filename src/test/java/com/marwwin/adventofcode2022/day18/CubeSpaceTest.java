@@ -33,19 +33,19 @@ public class CubeSpaceTest {
   }
 
   @Test
-  public void shouldGetTrapped() {
+  public void shouldGetTrappedTest() {
 
     CubeSpace space = new CubeSpace(AoC.getInputAsString("day18", true));
     space.connectCubes();
-    int s = 0;
-    for (List<Cube> list : space.space.values()) {
-      for (Cube cube : list) {
-        System.out.println(cube);
-        s += cube.exposedSides();
-      }
-    }
-    System.out.println(s);
-    System.out.println(space.getTrappedCubes());
+    System.out.println(space.count());
+  }
+
+  @Test
+  public void shouldGetTrapped() {
+
+    CubeSpace space = new CubeSpace(AoC.getInputAsString("day18", false));
+    space.connectCubes();
+    System.out.println(space.count());
   }
 
   @Test

@@ -9,13 +9,15 @@ public class Cube {
   private int y;
   private int z;
 
-  private boolean right = false;
-  private boolean left = false;
-  private boolean up = false;
-  private boolean down = false;
-  private boolean above = false;
-  private boolean below = false;
+  private Cube right = null;
+  private Cube left = null;
+  private Cube up = null;
+  private Cube down = null;
+  private Cube above = null;
+  private Cube below = null;
+
   private int score;
+  private boolean found;
 
   public Cube(int x, int y, int z) {
 
@@ -39,66 +41,6 @@ public class Cube {
     this.score = position.getX() + position.getY() + position.getZ();
   }
 
-  public int getX() {
-    return position.getX();
-  }
-
-  public int getY() {
-    return position.getY();
-  }
-
-  public int getZ() {
-    return position.getZ();
-  }
-
-  public boolean isRight() {
-    return right;
-  }
-
-  public boolean isLeft() {
-    return left;
-  }
-
-  public boolean isUp() {
-    return up;
-  }
-
-  public boolean isDown() {
-    return down;
-  }
-
-  public boolean isAbove() {
-    return above;
-  }
-
-  public boolean isBelow() {
-    return below;
-  }
-
-  public void setRight(boolean right) {
-    this.right = right;
-  }
-
-  public void setLeft(boolean left) {
-    this.left = left;
-  }
-
-  public void setUp(boolean up) {
-    this.up = up;
-  }
-
-  public void setDown(boolean down) {
-    this.down = down;
-  }
-
-  public void setAbove(boolean above) {
-    this.above = above;
-  }
-
-  public void setBelow(boolean below) {
-    this.below = below;
-  }
-
   public int exposedSides() {
     return countExposed(right) +
         countExposed(left) +
@@ -108,8 +50,8 @@ public class Cube {
         countExposed(below);
   }
 
-  public int countExposed(boolean bool) {
-    return (!bool) ? 1 : 0;
+  public int countExposed(Cube cube) {
+    return (cube == null) ? 1 : 0;
   }
 
   public Integer score() {
@@ -135,19 +77,19 @@ public class Cube {
     return null;
   }
 
-  public void connect(Directions connected) {
+  public void connect(Directions connected, Cube cube) {
     if (connected == Directions.RIGHT)
-      right = true;
+      right = cube;
     if (connected == Directions.LEFT)
-      left = true;
+      left = cube;
     if (connected == Directions.UP)
-      up = true;
+      up = cube;
     if (connected == Directions.DOWN)
-      down = true;
+      down = cube;
     if (connected == Directions.FORWARD)
-      above = true;
+      above = cube;
     if (connected == Directions.BACKWARD)
-      below = true;
+      below = cube;
   }
 
   @Override
@@ -160,7 +102,97 @@ public class Cube {
     return position;
   }
 
+  public void setFound() {
+    found = true;
+  }
+
+  public boolean getFound() {
+    return found;
+  }
 
 
+  public int getX() {
+    return position.getX();
+  }
+
+  public int getY() {
+    return position.getY();
+  }
+
+  public int getZ() {
+    return position.getZ();
+  }
+
+  public boolean isRight() {
+    return right != null;
+  }
+
+  public boolean isLeft() {
+    return left != null;
+  }
+
+  public boolean isUp() {
+    return up != null;
+  }
+
+  public boolean isDown() {
+    return down != null;
+  }
+
+  public boolean isAbove() {
+    return above != null;
+  }
+
+  public boolean isBelow() {
+    return below != null;
+  }
+
+  public void setRight(Cube right) {
+    this.right = right;
+  }
+
+  public void setLeft(Cube left) {
+    this.left = left;
+  }
+
+  public void setUp(Cube up) {
+    this.up = up;
+  }
+
+  public void setDown(Cube down) {
+    this.down = down;
+  }
+
+  public void setAbove(Cube above) {
+    this.above = above;
+  }
+
+  public void setBelow(Cube below) {
+    this.below = below;
+  }
+
+  public Cube getRight() {
+    return right;
+  }
+
+  public Cube getLeft() {
+    return left;
+  }
+
+  public Cube getUp() {
+    return up;
+  }
+
+  public Cube getDown() {
+    return down;
+  }
+
+  public Cube getAbove() {
+    return above;
+  }
+
+  public Cube getBelow() {
+    return below;
+  }
 
 }
