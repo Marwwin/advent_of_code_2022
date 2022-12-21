@@ -44,22 +44,22 @@ public class CubeTest {
     assertFalse(cube.isBelow());
     assertEquals(cube.exposedSides(), 6);
 
-    cube.setRight(true);
+    cube.setRight(new Cube(1, 0, 0));
     assertEquals(cube.exposedSides(), 5);
 
-    cube.setLeft(true);
+    cube.setLeft(new Cube(-1, 0, 0));
     assertEquals(cube.exposedSides(), 4);
 
-    cube.setUp(true);
+    cube.setUp(new Cube(0, 1, 0));
     assertEquals(cube.exposedSides(), 3);
 
-    cube.setDown(true);
+    cube.setDown(new Cube(0, -1, 0));
     assertEquals(cube.exposedSides(), 2);
 
-    cube.setBelow(true);
+    cube.setBelow(new Cube(0, 0, -1));
     assertEquals(cube.exposedSides(), 1);
 
-    cube.setAbove(true);
+    cube.setAbove(new Cube(0, 0, 1));
     assertEquals(cube.exposedSides(), 0);
 
     assertTrue(cube.isRight());
