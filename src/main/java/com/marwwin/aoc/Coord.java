@@ -2,7 +2,7 @@ package com.marwwin.aoc;
 
 import java.util.Objects;
 
-public class Coord {
+public class Coord implements Comparable<Coord> {
   private Integer x = null;
   private Integer y = null;
   private Integer z = null;
@@ -49,7 +49,7 @@ public class Coord {
 
   @Override
   public int hashCode() {
-    return Objects.hash(x,y,z);
+    return Objects.hash(x, y, z);
   }
 
   @Override
@@ -62,7 +62,15 @@ public class Coord {
       return false;
 
     Coord other = (Coord) obj;
-    return Objects.equals(x,other.getX()) && Objects.equals(y,other.getY()) && Objects.equals(z,other.getZ());
+    return Objects.equals(x, other.getX()) && Objects.equals(y, other.getY()) && Objects.equals(z, other.getZ());
+  }
+
+  @Override
+  public int compareTo(Coord coord) {
+    if (getZ() == null)
+      return (getX() + getY()) - (coord.getX() + coord.getY());
+    return (getX() + getY() + getZ()) - (coord.getX() + coord.getY() + coord.getZ());
+
   }
 
 }

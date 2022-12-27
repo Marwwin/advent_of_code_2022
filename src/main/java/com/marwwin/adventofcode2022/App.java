@@ -71,12 +71,12 @@ public class App {
 
                 System.out.println();
                 Tetris tetris = new Tetris(7, AoC.getInputAsString("day17", true).get(0));
-                tetris.play(1);
-               // tetris.print();
-                tetris.play(1);
-               // tetris.print();
-                tetris.play(1);
-               // tetris.print();
+                tetris.drop(tetris.spawn(TetrisShape.BOX));
+                tetris.drop(tetris.spawn(TetrisShape.BOX));
+                tetris.drop(tetris.spawn(TetrisShape.BOX));
+                tetris.print();
+                System.out.println(tetris.heightOfRocks()+ " "+ (tetris.getHeight() - 3));
+
         }
 
         private static void showHeader() {

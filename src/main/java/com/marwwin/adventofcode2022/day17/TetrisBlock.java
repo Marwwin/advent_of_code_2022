@@ -11,7 +11,6 @@ public class TetrisBlock {
   private List<Coord> bricks = new ArrayList<>();
   private Coord position = new Coord(0, 0);
 
-
   private TetrisShape shape;
   private int highestY;
   private int rightMost;
@@ -51,15 +50,14 @@ public class TetrisBlock {
   }
 
   public void move(char ch) {
-    moveDown();
     if (ch == '>')
       moveRight();
     if (ch == '<')
       moveLeft();
+    moveDown();
   }
 
   public void move(char jet, int rightWall, int leftWall) {
-    moveDown();
     if (position.getX() + rightMost < rightWall)
       if (jet == '>')
         moveRight();
@@ -67,6 +65,7 @@ public class TetrisBlock {
       if (jet == '<')
         moveLeft();
     }
+    moveDown();
   }
 
   private void createBox() {
@@ -130,7 +129,7 @@ public class TetrisBlock {
 
   public void moveUp() {
     position.setY(position.getY() + 1);
-  
+
   }
 
   public TetrisShape getShape() {
@@ -158,15 +157,17 @@ public class TetrisBlock {
     return "Block [Coord=" + position + ", shape=" + shape + ", rightMost=" + rightMost + ", leftMost="
         + leftMost + ", isAtRest=" + isAtRest + "]";
   }
+
   public Coord getPosition() {
     return position;
   }
-  public Object getLeftBoundary() {
+
+  public int getLeftBoundary() {
     return leftMost + position.getX();
   }
+
   public int getRightBoundary() {
     return rightMost + position.getX();
   }
-
 
 }

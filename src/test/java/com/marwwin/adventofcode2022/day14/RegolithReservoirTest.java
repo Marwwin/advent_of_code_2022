@@ -62,12 +62,10 @@ public class RegolithReservoirTest {
 
   @Test
   public void shouldDrow() {
-    RegolithReservoir reservoir = new RegolithReservoir(AoC.getInputAsString("day14", false));
-
-    while (reservoir.getAtBottom() == false) {
-      reservoir.dropSand();
-
-    }
+    //RegolithReservoir reservoir = new RegolithReservoir(AoC.getInputAsString("day14", false));
+    //while (reservoir.getAtBottom() == false) {
+    //  reservoir.dropSand();
+    //}
   }
 
   @Test
