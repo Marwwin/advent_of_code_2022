@@ -18,16 +18,11 @@ public class Day25 extends Day {
 
   @Override
   public Object part1() {
-    long sum = 0;
-    BigInteger b = new BigInteger("0");
+    BigInteger sum = BigInteger.ZERO;
     for (String str : input) {
-      SNAFU s = new SNAFU(str);
-      b = b.add(s.getDecimal());
-      System.out.println(s.getDecimal());
+      sum = sum.add(new SNAFU(str).getDecimal());
     }
-    System.out.println(sum);
-    System.out.println(b);
-    return new SNAFU(b).getSNAFU();
+    return new SNAFU(sum).getSNAFU();
   }
 
   @Override
