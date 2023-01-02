@@ -17,7 +17,8 @@ public class CircularIntegerList {
         .map(Integer::parseInt)
         .collect(Collectors.toList());
 
-    this.size = input.size();
+    this.size = new LinkedHashSet<>(intList).size();
+
     parseCircularList(new ArrayList<>(new LinkedHashSet<>(intList)));
   }
 
@@ -41,9 +42,8 @@ public class CircularIntegerList {
   }
 
   public void play(int rounds) {
-    for (int i = 0; i < rounds; i++) {
-      int curr = i % intList.size();
-      move(intList.get(curr), intList.get(curr));
+    for (int i = 0; i < Math.min(rounds, size); i++) {
+      move(intList.get(i), intList.get(i));
     }
   }
 
@@ -51,20 +51,32 @@ public class CircularIntegerList {
     for (int i = 0; i < intList.size(); i++) {
       move(intList.get(i), intList.get(i));
     }
-    root = find(0);
+    root = find(0, root);
   }
 
   public void move(int value, int i) {
     int currentIndex = getIndex(value);
+    System.out.println("start: " + getList() + " i:" + i + " value:" + value + " currentIndex:" + currentIndex);
+    if (i < 0)
+      i = (i % size) + size;
+    
+    int distance = (currentIndex + i) % size;
+    System.out.println(" distance:" + distance + " i:" + i);
+
+    //if (distance == 0)
+    //  return;
+//
+   //if (value == root.getValue() && distance < 0) {
+   //  --distance;
+   //}
     CircularNode node = remove(value, i > 0);
-    if ((currentIndex + i) >= intList.size()) {
-      ++i;
-    }
-    add(node, (currentIndex + i) % intList.size());
+    //System.out.println(" node removed:" + node);
+    //System.out.println(" distance:" + distance);
+    add(node, distance);
   }
 
   public CircularNode remove(int value, boolean movingRight) {
-    CircularNode node = find(value);
+    CircularNode node = find(value, root);
     if (root.getValue() == node.getValue()) {
       root = movingRight
           ? node.getRightChild()
@@ -76,6 +88,7 @@ public class CircularIntegerList {
   }
 
   public void add(CircularNode node, int i) {
+
     CircularNode right = at(i);
     CircularNode left = right.getLeftChild();
 
@@ -84,17 +97,20 @@ public class CircularIntegerList {
 
     node.setLeftChild(left);
     node.setRightChild(right);
+    if (i == 0){
+      root = node;
+    }
   }
 
   public int getIndex(int value) {
-    return getIndexHelper(root, value, 0);
-  }
-
-  private int getIndexHelper(CircularNode node, int value, int i) {
-    if (node.getValue() == value) {
-      return i;
+    int index = 0;
+    CircularNode node = root;
+    while (node.getValue() != value) {
+      index += 1;
+      node = node.getRightChild();
     }
-    return getIndexHelper(node.getRightChild(), value, ++i);
+    return index;
+
   }
 
   public CircularNode getRoot() {
@@ -119,12 +135,12 @@ public class CircularIntegerList {
     return size;
   }
 
-  public CircularNode find(int value) {
-    return findHelper(root, value);
-  }
-
-  private CircularNode findHelper(CircularNode node, int value) {
-    return node.getValue() == value ? node : findHelper(node.getRightChild(), value);
+  public CircularNode find(int value, CircularNode root) {
+    CircularNode node = root;
+    while (node.getValue() != value) {
+      node = node.getRightChild();
+    }
+    return node;
   }
 
   public List<Integer> getList() {

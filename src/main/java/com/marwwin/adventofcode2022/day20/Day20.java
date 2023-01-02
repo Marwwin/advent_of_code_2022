@@ -19,7 +19,10 @@ public class Day20 extends Day {
     CircularIntegerList list = new CircularIntegerList(input);
     System.out.println("root:" + list.getRoot());
     list.mix();
-    return list.at(999 % list.size()).getValue() + list.at(1999 % list.size()).getValue() + list.at(2999 % list.size()).getValue() ;
+    System.out.println(list.at(1000 % list.size()));
+    System.out.println(list.at(2000 % list.size()));
+    System.out.println(list.at(3000 % list.size()));
+    return list.at(1000 % list.size()).getValue() + list.at(2000 % list.size()).getValue() + list.at(3000 % list.size()).getValue() ;
   }
 
   @Override

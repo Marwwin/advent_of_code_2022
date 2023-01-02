@@ -70,7 +70,7 @@ public class Valve {
   private List<Valve> recursivelyGetChild(Valve valve) {
     List<Valve> children =  new ArrayList<Valve>(); 
     if (valve.getFlowRate() == 0){
-      return valve.getChildren() recursivelyGetChild();
+    //  return valve.getChildren() recursivelyGetChild();
     }
     children.add(valve);
    // return children
